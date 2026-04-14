@@ -5,228 +5,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>8-Week Cut Plan · Full Planner</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── PALETTE FROM PHOTO ── */
-/* olive boot: #5c5c3a / #7a7a4a */
-/* dusty blue chalk: #8fadb8 / #b8d0d9 / #ddeaee */
-/* lavender chalk: #a896b4 / #d4c8dc / #ece6f0 */
-/* warm concrete: #b8a898 / #e8e0d6 / #f4f1ed */
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM
+   4 colors only. Black on cream everywhere.
+   Text is ALWAYS #1a1a1a or #555. Never anything else.
+   ═══════════════════════════════════════════════════ */
 :root {
-  /* Photo palette — dark shades for text, light shades for backgrounds */
-  /* Olive (boot)      — dark text / medium header / pale tint           */
-  --olive:#3a3a22;
-  --olive-mid:#50502e;
-  --olive-pale:#e0e0c8;
-  --olive-bg:#f6f6ef;
-  /* Dusty blue (chalk) — dark text / medium gradient / pale tint        */
-  --blue:#1c5468;
-  --blue-mid:#2a6e84;
-  --blue-pale:#bdd8e4;
-  --blue-lt:#e8f3f7;
-  /* Lavender (chalk)  — dark text / medium gradient / pale tint         */
-  --lav:#3c2c52;
-  --lav-mid:#58426e;
-  --lav-pale:#d8cce6;
-  --lav-lt:#f0ecf8;
-  /* Warm concrete     — surfaces & borders only, never tiny text        */
-  --concrete:#6e6258;
-  --concrete-lt:#ece4dc;
-  --concrete-pale:#f5f0eb;
-  /* Neutrals                                                            */
-  --offwhite:#faf8f5;
-  --charcoal:#18160e;
-  --muted:#4a4440;
-  --border:#d0c8be;
-  /* Macro pill text — all dark enough on their pale backgrounds         */
-  --pro:#3a3a22;
-  --fib:#1c5468;
-  --fat:#3c2c52;
+  --black:   #1a1a1a;   /* all headings & body text           */
+  --mid:     #555555;   /* secondary text, timestamps, labels */
+  --subtle:  #888888;   /* placeholder, very secondary only   */
+  --border:  #d8d8d8;   /* all borders and dividers           */
+  --cream:   #faf8f4;   /* page background                    */
+  --white:   #ffffff;   /* card backgrounds                   */
+  --surface: #f2f0ec;   /* alternate card / row backgrounds   */
+  --accent:  #1a1a1a;   /* checkboxes, active states = black  */
 }
+
+/* ── RESET ── */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--charcoal);line-height:1.65;}
-a{color:var(--olive);text-decoration:none;border-bottom:1px solid var(--olive-pale);transition:color .2s;}
-a:hover{color:var(--lav);border-color:var(--lav-pale);}
+body{font-family:‘Inter’,-apple-system,BlinkMacSystemFont,‘Segoe UI’,Helvetica,Arial,sans-serif;background:var(–cream);color:var(–black);line-height:1.65;font-size:15px;}
+a{color:var(–black);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+a:hover{opacity:.7;}
 
 /* ── HEADER ── */
-.hdr{background:var(–olive);padding:44px 32px 0;position:relative;overflow:hidden;color:white;}
-.hdr::before{content:’’;position:absolute;bottom:-1px;left:0;right:0;height:28px;background:var(–offwhite);border-radius:28px 28px 0 0;}
-.hdr::after{content:’’;position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.05);}
+.hdr{background:var(–black);padding:44px 32px 0;position:relative;overflow:hidden;color:var(–white);}
+.hdr::before{content:’’;position:absolute;bottom:-1px;left:0;right:0;height:28px;background:var(–cream);border-radius:28px 28px 0 0;}
 .hdr-inner{max-width:960px;margin:0 auto;}
-.hdr-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:.6;margin-bottom:8px;}
-.hdr h1{font-family:‘Lora’,serif;font-size:clamp(24px,4vw,38px);font-weight:700;margin-bottom:8px;}
-.hdr h1 em{font-style:italic;color:#e8e8d0;}
-.hdr-sub{font-size:13px;opacity:.72;margin-bottom:6px;}
-.allergy-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:7px 13px;font-size:12px;margin-bottom:22px;}
-.allergy-pill strong{color:#f0f8fb;}
+.hdr-tag{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;opacity:.5;margin-bottom:10px;}
+.hdr h1{font-size:clamp(26px,4.5vw,42px);font-weight:700;letter-spacing:-0.5px;margin-bottom:6px;line-height:1.1;}
+.hdr h1 em{font-style:normal;opacity:.65;}
+.hdr-sub{font-size:13px;opacity:.55;margin-bottom:8px;}
+.allergy-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:6px;padding:7px 13px;font-size:12px;margin-bottom:24px;}
+.allergy-pill strong{opacity:1;}
 
 /* ── TABS ── */
-.tabs{display:flex;gap:3px;position:relative;z-index:2;flex-wrap:wrap;}
-.tab{padding:11px 20px;font-size:13px;font-weight:600;border-radius:10px 10px 0 0;cursor:pointer;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.72);border:none;transition:all .2s;font-family:inherit;}
-.tab:hover{background:rgba(255,255,255,0.22);color:white;}
-.tab.active{background:var(–offwhite);color:var(–charcoal);}
+.tabs{display:flex;gap:2px;position:relative;z-index:2;flex-wrap:wrap;}
+.tab{padding:11px 20px;font-size:13px;font-weight:600;border-radius:8px 8px 0 0;cursor:pointer;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.55);border:none;transition:all .15s;font-family:inherit;letter-spacing:.1px;}
+.tab:hover{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);}
+.tab.active{background:var(–cream);color:var(–black);}
 
-/* ── WRAPPER ── */
-.wrap{max-width:960px;margin:0 auto;padding:30px 22px 80px;}
+/* ── MAIN WRAPPER ── */
+.wrap{max-width:960px;margin:0 auto;padding:32px 22px 80px;}
 .panel{display:none;}
 .panel.active{display:block;}
-.sec-title{font-family:‘Lora’,serif;font-size:22px;font-weight:700;color:var(–olive);margin-bottom:4px;}
-.sec-sub{font-size:13px;color:var(–muted);margin-bottom:22px;}
+.sec-title{font-size:20px;font-weight:700;color:var(–black);margin-bottom:4px;letter-spacing:-0.3px;}
+.sec-sub{font-size:13px;color:var(–mid);margin-bottom:22px;}
 .sep{height:1px;background:var(–border);margin:32px 0;}
 
 /* ── STRATEGY CARD ── */
-.strategy-card{background:white;border:1px solid var(–border);border-radius:16px;padding:22px 26px;margin-bottom:36px;}
-.strategy-card h3{font-family:‘Lora’,serif;font-size:16px;color:var(–olive);margin-bottom:12px;}
-.pa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;}
-.pa-item{background:var(–concrete-pale);border-radius:11px;padding:13px 14px;}
-.pa-emoji{font-size:20px;margin-bottom:5px;}
-.pa-name{font-size:13px;font-weight:700;color:var(–charcoal);margin-bottom:2px;}
-.pa-uses{font-size:11px;color:var(–muted);line-height:1.5;}
-.pa-days{font-size:10px;font-weight:700;color:var(–olive);margin-top:4px;}
+.strategy-card{background:var(–white);border:1px solid var(–border);border-radius:12px;padding:22px 24px;margin-bottom:32px;}
+.strategy-card h3{font-size:15px;font-weight:700;color:var(–black);margin-bottom:14px;}
+.pa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+.pa-item{background:var(–surface);border-radius:8px;padding:13px 14px;}
+.pa-emoji{font-size:19px;margin-bottom:5px;}
+.pa-name{font-size:13px;font-weight:700;color:var(–black);margin-bottom:3px;}
+.pa-uses{font-size:11px;color:var(–mid);line-height:1.55;}
+.pa-days{font-size:10px;font-weight:700;color:var(–black);margin-top:5px;letter-spacing:.5px;text-transform:uppercase;}
 
 /* ── NUTRITION GRID ── */
-.nut-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;background:var(–border);border-radius:14px;overflow:hidden;margin-bottom:34px;}
-.nut-cell{background:white;padding:16px 12px;text-align:center;}
-.nut-val{font-family:‘Lora’,serif;font-size:26px;font-weight:700;color:var(–olive);display:block;}
-.nut-label{font-size:10px;color:var(–muted);text-transform:uppercase;letter-spacing:1px;}
+.nut-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:1px;background:var(–border);border-radius:12px;overflow:hidden;margin-bottom:32px;}
+.nut-cell{background:var(–white);padding:16px 12px;text-align:center;}
+.nut-val{font-size:24px;font-weight:700;color:var(–black);display:block;letter-spacing:-0.5px;}
+.nut-label{font-size:10px;color:var(–mid);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
 
 /* ── MORNING CARD ── */
-.morning-card{background:linear-gradient(135deg,var(–blue),var(–blue-mid));border-radius:14px;padding:18px 22px;color:white;margin-bottom:32px;display:flex;align-items:center;gap:14px;}
-.morning-card h3{font-family:‘Lora’,serif;font-size:15px;margin-bottom:2px;}
-.morning-card p{font-size:12px;opacity:.88;}
+.morning-card{background:var(–black);border-radius:12px;padding:18px 22px;color:var(–white);margin-bottom:30px;display:flex;align-items:center;gap:14px;}
+.morning-card h3{font-size:14px;font-weight:700;margin-bottom:3px;}
+.morning-card p{font-size:12px;opacity:.7;}
 
 /* ── MACRO LEGEND ── */
-.macro-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;font-size:12px;}
-.ml-item{display:flex;align-items:center;gap:4px;color:var(–muted);}
-.ml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.ml-pro{background:var(–pro);} .ml-fib{background:var(–fib);} .ml-fat{background:var(–fat);}
+.macro-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;font-size:12px;color:var(–mid);}
+.ml-item{display:flex;align-items:center;gap:5px;}
+.ml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(–black);}
 
 /* ── DAY CARDS ── */
-.day-card{background:white;border-radius:14px;border:1px solid var(–border);overflow:hidden;margin-bottom:11px;}
-.day-hdr{background:var(–concrete-pale);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(–border);flex-wrap:wrap;gap:7px;}
-.day-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(–muted);}
-.day-name{font-family:‘Lora’,serif;font-size:16px;font-weight:700;}
+.day-card{background:var(–white);border-radius:12px;border:1px solid var(–border);overflow:hidden;margin-bottom:10px;}
+.day-hdr{background:var(–surface);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(–border);flex-wrap:wrap;gap:7px;}
+.day-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(–mid);}
+.day-name{font-size:15px;font-weight:700;color:var(–black);}
 .day-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.day-cals{font-size:11px;font-weight:600;background:var(–lav-pale);color:var(–lav);padding:3px 10px;border-radius:99px;}
-.day-macros{font-size:11px;display:flex;gap:6px;}
-.dm-pro{color:var(–pro);font-weight:600;} .dm-fib{color:var(–fib);font-weight:600;} .dm-fat{color:var(–fat);font-weight:600;}
-.reuse-bar{background:var(–blue-lt);border-bottom:1px solid #c8dde5;padding:6px 18px;font-size:11px;color:var(–blue);font-weight:600;}
+.day-cals{font-size:11px;font-weight:600;background:var(–black);color:var(–white);padding:3px 10px;border-radius:99px;}
+.day-macros{font-size:11px;display:flex;gap:8px;}
+.dm-pro,.dm-fib,.dm-fat{color:var(–black);font-weight:600;}
+.reuse-bar{background:var(–surface);border-bottom:1px solid var(–border);padding:6px 18px;font-size:11px;color:var(–mid);font-weight:600;}
 
 /* ── MEAL TABLE ── */
 .mt{width:100%;border-collapse:collapse;}
-.mt tr{border-bottom:1px solid var(–concrete-pale);}
+.mt tr{border-bottom:1px solid var(–surface);}
 .mt tr:last-child{border-bottom:none;}
-.mt td{padding:9px 18px;vertical-align:top;}
-.mt-time{width:78px;font-size:10px;color:var(–muted);text-transform:uppercase;letter-spacing:1px;padding-top:11px;font-weight:600;white-space:nowrap;}
-.mn{font-size:13px;font-weight:600;color:var(–charcoal);}
-.md{font-size:12px;color:var(–muted);margin-top:2px;line-height:1.5;}
-.ml-link{display:inline-block;margin-top:3px;font-size:11px;font-weight:600;}
-.nyt{display:inline-block;background:#1a1a1a;color:white;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-right:4px;vertical-align:middle;}
+.mt td{padding:10px 18px;vertical-align:top;}
+.mt-time{width:78px;font-size:10px;color:var(–mid);text-transform:uppercase;letter-spacing:1px;padding-top:12px;font-weight:600;white-space:nowrap;}
+.mn{font-size:13px;font-weight:600;color:var(–black);}
+.md{font-size:12px;color:var(–mid);margin-top:2px;line-height:1.55;}
+.ml-link{display:inline-block;margin-top:4px;font-size:11px;font-weight:600;}
+.nyt{display:inline-block;background:var(–black);color:var(–white);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-right:4px;vertical-align:middle;}
 .pills{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;}
-.pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;}
-.pp{background:#e8e8d4;color:var(–pro);}
-.pf{background:var(–blue-lt);color:var(–blue);}
-.pt{background:var(–lav-lt);color:var(–lav);}
-.pc{background:#efefef;color:#555;}
-.mt-cal{width:56px;text-align:right;font-size:12px;font-weight:600;color:var(–olive);padding-top:11px;white-space:nowrap;}
+.pill{font-size:10px;font-weight:700;padding:2px 9px;border-radius:99px;background:var(–surface);color:var(–black);border:1px solid var(–border);}
+.pc{background:var(–surface);color:var(–mid);border:1px solid var(–border);}
+.mt-cal{width:56px;text-align:right;font-size:12px;font-weight:700;color:var(–black);padding-top:12px;white-space:nowrap;}
 
-/* ── PREP BLOCK (inside meal tab) ── */
-.prep-block{background:linear-gradient(135deg,var(–olive),var(–olive-mid));color:white;border-radius:14px;padding:22px 24px;margin:28px 0;}
-.prep-block h3{font-family:‘Lora’,serif;font-size:16px;margin-bottom:12px;}
+/* ── PREP BLOCK (Sunday summary inside meal tab) ── */
+.prep-block{background:var(–black);color:var(–white);border-radius:12px;padding:22px 24px;margin:28px 0;}
+.prep-block h3{font-size:15px;font-weight:700;margin-bottom:14px;}
 .prep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;}
-.prep-item-box{background:rgba(255,255,255,0.13);border-radius:10px;padding:13px;}
+.prep-item-box{background:rgba(255,255,255,0.08);border-radius:8px;padding:13px;}
 .pib-title{font-weight:700;font-size:12px;margin-bottom:4px;}
-.pib-desc{font-size:11px;opacity:.84;line-height:1.5;}
+.pib-desc{font-size:11px;opacity:.65;line-height:1.5;}
 
-/* ══════ SHOPPING ══════ */
-.shop-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
-.shop-badge{background:white;border:1px solid var(–border);border-radius:99px;padding:5px 13px;font-size:12px;font-weight:600;color:var(–olive);}
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;margin-bottom:28px;}
-.shop-cat{background:white;border-radius:14px;border:1px solid var(–border);overflow:hidden;}
-.shop-cat-hdr{padding:11px 16px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(–border);}
-.cat-icon{font-size:17px;}
-.cat-name{font-weight:700;font-size:13px;}
-.cat-count{margin-left:auto;font-size:10px;color:var(–muted);background:var(–concrete-pale);padding:2px 7px;border-radius:99px;}
-.shop-item{display:flex;align-items:flex-start;gap:9px;padding:7px 16px;cursor:pointer;transition:background .15s;border-bottom:1px solid var(–concrete-pale);}
+/* ═══════ SHOPPING ═══════ */
+.shop-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
+.shop-badge{background:var(–white);border:1px solid var(–border);border-radius:99px;padding:5px 13px;font-size:12px;font-weight:600;color:var(–black);}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px;margin-bottom:24px;}
+.shop-cat{background:var(–white);border-radius:12px;border:1px solid var(–border);overflow:hidden;}
+.shop-cat-hdr{padding:11px 16px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(–border);background:var(–surface);}
+.cat-icon{font-size:16px;}
+.cat-name{font-weight:700;font-size:13px;color:var(–black);}
+.cat-count{margin-left:auto;font-size:10px;color:var(–mid);background:var(–white);border:1px solid var(–border);padding:2px 7px;border-radius:99px;}
+.shop-item{display:flex;align-items:flex-start;gap:9px;padding:8px 16px;cursor:pointer;transition:background .12s;border-bottom:1px solid var(–surface);}
 .shop-item:last-child{border-bottom:none;}
-.shop-item:hover{background:var(–concrete-pale);}
-.shop-item.checked .si-label{text-decoration:line-through;opacity:.45;}
-.si-cb{width:17px;height:17px;border-radius:4px;border:2px solid var(–border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-.shop-item.checked .si-cb{background:var(–olive);border-color:var(–olive);}
-.si-ck{color:white;font-size:10px;display:none;}
+.shop-item:hover{background:var(–surface);}
+.shop-item.checked .si-label{text-decoration:line-through;color:var(–subtle);}
+.si-cb{width:17px;height:17px;border-radius:4px;border:2px solid var(–border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .12s;}
+.shop-item.checked .si-cb{background:var(–black);border-color:var(–black);}
+.si-ck{color:var(–white);font-size:10px;display:none;}
 .shop-item.checked .si-ck{display:block;}
-.si-label{font-size:12px;color:var(–charcoal);flex:1;}
-.si-qty{font-size:10px;color:var(–muted);font-weight:600;white-space:nowrap;margin-top:2px;}
-.clear-btn{background:var(–concrete-pale);border:1px solid var(–border);border-radius:9px;padding:7px 16px;font-size:12px;font-weight:600;color:var(–muted);cursor:pointer;font-family:inherit;transition:all .2s;}
-.clear-btn:hover{background:var(–lav-pale);color:var(–lav);}
-.hummus-card{background:var(–lav-lt);border:1px solid var(–lav-pale);border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:13px;}
-.hummus-card h4{font-family:‘Lora’,serif;font-size:14px;color:var(–lav);margin-bottom:6px;}
-.hummus-card p{color:var(–muted);font-size:12px;line-height:1.6;}
+.si-label{font-size:12px;color:var(–black);flex:1;line-height:1.45;}
+.si-qty{font-size:10px;color:var(–mid);font-weight:600;white-space:nowrap;margin-top:2px;}
+.clear-btn{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:8px 18px;font-size:12px;font-weight:600;color:var(–mid);cursor:pointer;font-family:inherit;transition:all .15s;}
+.clear-btn:hover{background:var(–black);color:var(–white);border-color:var(–black);}
+.hummus-card{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:16px 20px;margin-bottom:22px;}
+.hummus-card h4{font-size:13px;font-weight:700;color:var(–black);margin-bottom:6px;}
+.hummus-card p{color:var(–mid);font-size:12px;line-height:1.6;}
 
-/* ══════ PREP LIST ══════ */
-.prep-intro{background:linear-gradient(135deg,var(–olive),var(–olive-mid));border-radius:14px;padding:20px 24px;color:white;margin-bottom:24px;}
-.prep-intro h3{font-family:‘Lora’,serif;font-size:16px;margin-bottom:5px;}
-.prep-intro p{font-size:13px;opacity:.86;}
-.prep-section{margin-bottom:24px;}
-.prep-sec-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;padding:11px 16px;border-radius:11px 11px 0 0;border:1px solid var(–border);}
-.ps-sun{background:var(–concrete-pale);color:var(–charcoal);border-color:#d0c4b8;}
-.ps-weekly{background:var(–olive-pale);color:var(–olive);border-color:#c4c4a0;}
-.ps-daily{background:var(–blue-lt);color:var(–blue);border-color:#c0d8e2;}
-.prep-items-wrap{background:white;border:1px solid var(–border);border-top:none;border-radius:0 0 11px 11px;overflow:hidden;}
-.prep-row{display:flex;align-items:flex-start;gap:11px;padding:11px 16px;border-bottom:1px solid var(–concrete-pale);cursor:pointer;transition:background .15s;}
+/* ═══════ PREP LIST ═══════ */
+.prep-intro{background:var(–black);border-radius:12px;padding:20px 24px;color:var(–white);margin-bottom:22px;}
+.prep-intro h3{font-size:15px;font-weight:700;margin-bottom:5px;}
+.prep-intro p{font-size:13px;opacity:.7;}
+.prep-section{margin-bottom:22px;}
+.prep-sec-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:13px;padding:11px 16px;border-radius:10px 10px 0 0;border:1px solid var(–border);background:var(–surface);color:var(–black);}
+.prep-items-wrap{background:var(–white);border:1px solid var(–border);border-top:none;border-radius:0 0 10px 10px;overflow:hidden;}
+.prep-row{display:flex;align-items:flex-start;gap:11px;padding:11px 16px;border-bottom:1px solid var(–surface);cursor:pointer;transition:background .12s;}
 .prep-row:last-child{border-bottom:none;}
-.prep-row:hover{background:var(–concrete-pale);}
-.prep-row.checked .pr-label{text-decoration:line-through;opacity:.45;}
-.pr-cb{width:19px;height:19px;border-radius:5px;border:2px solid var(–border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-.prep-row.checked .pr-cb{background:var(–olive);border-color:var(–olive);}
-.prep-row.checked .pr-cb::after{content:‘✓’;color:white;font-size:11px;font-weight:700;}
+.prep-row:hover{background:var(–surface);}
+.prep-row.checked .pr-label{text-decoration:line-through;color:var(–subtle);}
+.prep-row.checked .pr-note{opacity:.4;}
+.pr-cb{width:19px;height:19px;border-radius:5px;border:2px solid var(–border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .12s;}
+.prep-row.checked .pr-cb{background:var(–black);border-color:var(–black);}
+.prep-row.checked .pr-cb::after{content:‘✓’;color:var(–white);font-size:11px;font-weight:700;}
 .pr-body{flex:1;}
-.pr-label{font-size:13px;color:var(–charcoal);}
-.pr-note{font-size:11px;color:var(–muted);margin-top:2px;line-height:1.5;}
-.pr-time{font-size:10px;font-weight:700;color:var(–muted);background:var(–concrete-pale);padding:2px 8px;border-radius:99px;flex-shrink:0;white-space:nowrap;}
+.pr-label{font-size:13px;color:var(–black);font-weight:500;}
+.pr-note{font-size:11px;color:var(–mid);margin-top:3px;line-height:1.55;}
+.pr-time{font-size:10px;font-weight:700;color:var(–mid);background:var(–surface);border:1px solid var(–border);padding:2px 8px;border-radius:99px;flex-shrink:0;white-space:nowrap;}
 
-/* ══════ SCHEDULE ══════ */
+/* ═══════ SCHEDULE ═══════ */
 .day-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:20px;}
-.day-tab{padding:7px 15px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;border:2px solid var(–border);background:white;color:var(–muted);transition:all .2s;font-family:inherit;}
-.day-tab:hover{border-color:var(–blue-mid);color:var(–blue);}
-.day-tab.active{background:var(–olive);border-color:var(–olive);color:white;}
-.day-tab.rest.active{background:var(–muted);border-color:var(–muted);}
+.day-tab{padding:7px 16px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;border:2px solid var(–border);background:var(–white);color:var(–mid);transition:all .15s;font-family:inherit;}
+.day-tab:hover{border-color:var(–black);color:var(–black);}
+.day-tab.active{background:var(–black);border-color:var(–black);color:var(–white);}
 .day-panel{display:none;}
 .day-panel.active{display:block;}
 
-.dhc{border-radius:14px;padding:18px 22px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.dhc-str{background:linear-gradient(135deg,var(–olive),var(–olive-mid));color:white;}
-.dhc-hit{background:linear-gradient(135deg,var(–lav),var(–lav-mid));color:white;}
-.dhc-rec{background:var(–concrete-pale);color:var(–charcoal);}
-.dhc-car{background:linear-gradient(135deg,var(–blue),var(–blue-mid));color:white;}
-.dhc-rst{background:var(–concrete-lt);color:var(–muted);}
-.dhc-left h2{font-family:‘Lora’,serif;font-size:19px;font-weight:700;margin-bottom:2px;}
-.dhc-left p{font-size:12px;opacity:.82;}
-.dhc-badges{display:flex;gap:7px;flex-wrap:wrap;}
-.dhc-badge{background:rgba(255,255,255,0.2);font-size:11px;font-weight:600;padding:3px 11px;border-radius:99px;}
-.dhc-rec .dhc-badge,.dhc-rst .dhc-badge{background:var(–border);color:var(–muted);}
+/* Day header cards — all use black bg + white text */
+.dhc{border-radius:12px;padding:18px 22px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:var(–black);color:var(–white);}
+.dhc-rec{background:var(–surface);color:var(–black);}
+.dhc-rst{background:var(–surface);color:var(–mid);}
+.dhc-left h2{font-size:18px;font-weight:700;margin-bottom:2px;letter-spacing:-0.3px;}
+.dhc-left p{font-size:12px;opacity:.65;}
+.dhc-badges{display:flex;gap:6px;flex-wrap:wrap;}
+.dhc-badge{background:rgba(255,255,255,0.15);font-size:11px;font-weight:600;padding:3px 11px;border-radius:99px;}
+.dhc-rec .dhc-badge,.dhc-rst .dhc-badge{background:var(–border);color:var(–mid);}
 
-.sched-list{display:flex;flex-direction:column;gap:5px;}
-.si2{display:grid;grid-template-columns:76px 26px 1fr 22px;gap:10px;align-items:start;padding:11px 16px;background:white;border:1px solid var(–border);border-radius:11px;cursor:pointer;transition:background .15s;}
-.si2:hover{background:var(–concrete-pale);}
-.si2.done{opacity:.5;}
+/* Schedule rows */
+.sched-list{display:flex;flex-direction:column;gap:4px;}
+.si2{display:grid;grid-template-columns:74px 26px 1fr 22px;gap:10px;align-items:start;padding:11px 16px;background:var(–white);border:1px solid var(–border);border-radius:10px;cursor:pointer;transition:background .12s;}
+.si2:hover{background:var(–surface);}
+.si2.done{opacity:.45;}
 .si2.done .si-title{text-decoration:line-through;}
-.si-time{font-size:10px;font-weight:700;color:var(–muted);letter-spacing:.5px;padding-top:2px;}
-.si-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
-.ic-meal{background:#e8e8d4;} .ic-wk{background:var(–lav-lt);} .ic-water{background:var(–blue-lt);} .ic-ritual{background:var(–concrete-lt);} .ic-rest{background:var(–concrete-pale);}
+.si-time{font-size:10px;font-weight:700;color:var(–mid);letter-spacing:.5px;padding-top:2px;}
+.si-icon{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:var(–surface);}
 .si-body{flex:1;}
-.si-title{font-size:13px;font-weight:600;color:var(–charcoal);}
-.si-detail{font-size:11px;color:var(–muted);margin-top:2px;line-height:1.5;}
-.si-macros{font-size:10px;margin-top:3px;display:flex;gap:5px;flex-wrap:wrap;}
-.sm-p{color:var(–pro);font-weight:600;} .sm-f{color:var(–fib);font-weight:600;} .sm-t{color:var(–fat);font-weight:600;}
-.si-cb2{width:20px;height:20px;border-radius:5px;border:2px solid var(–border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-.si2.done .si-cb2{background:var(–olive);border-color:var(–olive);}
-.si2.done .si-cb2::after{content:‘✓’;color:white;font-size:10px;font-weight:700;}
+.si-title{font-size:13px;font-weight:600;color:var(–black);}
+.si-detail{font-size:11px;color:var(–mid);margin-top:2px;line-height:1.5;}
+.si-macros{font-size:10px;margin-top:3px;display:flex;gap:6px;flex-wrap:wrap;color:var(–mid);}
+.sm-p,.sm-f,.sm-t{font-weight:600;color:var(–black);}
+.si-cb2{width:20px;height:20px;border-radius:5px;border:2px solid var(–border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .12s;}
+.si2.done .si-cb2{background:var(–black);border-color:var(–black);}
+.si2.done .si-cb2::after{content:‘✓’;color:var(–white);font-size:10px;font-weight:700;}
 
-.day-total{background:var(–concrete-pale);border:1px solid var(–border);border-radius:11px;padding:13px 16px;margin-top:14px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
+.day-total{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:13px 18px;margin-top:12px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;}
 .dt-item{text-align:center;}
-.dt-val{font-family:‘Lora’,serif;font-size:18px;font-weight:700;color:var(–olive);display:block;}
-.dt-label{font-size:10px;color:var(–muted);text-transform:uppercase;letter-spacing:1px;}
+.dt-val{font-size:18px;font-weight:700;color:var(–black);display:block;letter-spacing:-0.3px;}
+.dt-label{font-size:10px;color:var(–mid);text-transform:uppercase;letter-spacing:1px;}
 
 @media(max-width:520px){
 .hdr{padding:32px 16px 0;}
@@ -749,7 +720,7 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
       <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Cook quinoa (1.5 cups dry)</div><div class="pr-note">For Mon lunch lentil bowl only · 15 min simmer · store in one container</div></div><div class="pr-time">18 min</div></div>
       <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Make big pot of lentil soup</div><div class="pr-note">NYT Lentil Soup with Lots of Lemon · yields 6–8 cups · Mon lunch, Thu lunch, Sun lunch · freeze half for next week</div></div><div class="pr-time">40 min</div></div>
       <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Roast sheet pan of vegetables + batch chicken breast</div><div class="pr-note">Same oven, same time: 400°F · veg (zucchini, bell pepper, broccoli, sweet potato) on one pan · 1.5 lbs chicken on another · 22–25 min · eat chicken tonight, refrigerate rest</div></div><div class="pr-time">25 min active + 25 in oven</div></div>
-      <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Blend Martha Stewart hummus</div><div class="pr-note">1 can chickpeas (drained) + 3 tbsp olive oil + 2 tbsp lemon juice + 1 garlic clove + ½ tsp cumin + salt · blend until smooth · jar in fridge · used Thu snack · <a href="https://www.marthastewart.com/334974/hummus-without-tahini" target="_blank" style="color:var(--lav);">Recipe →</a></div></div><div class="pr-time">5 min</div></div>
+      <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Blend Martha Stewart hummus</div><div class="pr-note">1 can chickpeas (drained) + 3 tbsp olive oil + 2 tbsp lemon juice + 1 garlic clove + ½ tsp cumin + salt · blend until smooth · jar in fridge · used Thu snack · <a href="https://www.marthastewart.com/334974/hummus-without-tahini" target="_blank" style="color:var(--black);">Recipe →</a></div></div><div class="pr-time">5 min</div></div>
       <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Make lemon-olive oil dressing (jar)</div><div class="pr-note">3 tbsp olive oil + 2 tbsp lemon juice + 1 tsp Dijon + 1 garlic clove minced + pinch salt · shake in jar · replaces all vinegar dressings all week except Niçoise (use red wine vinegar for that)</div></div><div class="pr-time">4 min</div></div>
       <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Make soy-ginger sauce (small jar)</div><div class="pr-note">3 tbsp soy sauce + 1 tsp grated ginger + 2 garlic cloves minced + 1 tbsp lemon juice + 1 tsp olive oil · used Tue Asian chicken bowl</div></div><div class="pr-time">4 min</div></div>
       <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Freeze 2 smoothie packs (Wed & Sat)</div><div class="pr-note">2 zip bags, each with ½ banana + ½ cup berries + handful spinach · freeze flat · Wed & Sat: just add 1 cup almond milk + 1 scoop protein powder and blend</div></div><div class="pr-time">6 min</div></div>
@@ -775,17 +746,17 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
   </div>
 
   <div style="background:white;border:1px solid var(--border);border-radius:13px;padding:18px 20px;margin-top:4px;">
-    <div style="font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--olive);margin-bottom:12px;">📦 Storage Guide</div>
+    <div style="font-size:15px;font-weight:700;color:var(--black);margin-bottom:12px;">📦 Storage Guide</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:12px;font-size:12px;">
-      <div><strong>Batch chicken breast</strong><br><span style="color:var(--muted)">4 days fridge · reheat in pan with splash of water</span></div>
-      <div><strong>Hard boiled eggs (peeled)</strong><br><span style="color:var(--muted)">5 days in bowl of cold water, fridge</span></div>
-      <div><strong>Cooked grains</strong><br><span style="color:var(--muted)">5 days fridge · 3 months frozen</span></div>
-      <div><strong>Roasted vegetables</strong><br><span style="color:var(--muted)">4–5 days fridge · 90 sec microwave</span></div>
-      <div><strong>Lentil soup</strong><br><span style="color:var(--muted)">5 days fridge · freeze half immediately</span></div>
-      <div><strong>Homemade hummus</strong><br><span style="color:var(--muted)">5 days fridge in sealed jar</span></div>
-      <div><strong>Lemon-olive oil dressing</strong><br><span style="color:var(--muted)">1 week fridge · shake before using</span></div>
-      <div><strong>Smoothie freezer packs</strong><br><span style="color:var(--muted)">3 months frozen · blend from frozen</span></div>
-      <div><strong>Dave's Killer Bread</strong><br><span style="color:var(--muted)">Freeze half the loaf if not using quickly</span></div>
+      <div><strong>Batch chicken breast</strong><br><span style="color:var(--mid)">4 days fridge · reheat in pan with splash of water</span></div>
+      <div><strong>Hard boiled eggs (peeled)</strong><br><span style="color:var(--mid)">5 days in bowl of cold water, fridge</span></div>
+      <div><strong>Cooked grains</strong><br><span style="color:var(--mid)">5 days fridge · 3 months frozen</span></div>
+      <div><strong>Roasted vegetables</strong><br><span style="color:var(--mid)">4–5 days fridge · 90 sec microwave</span></div>
+      <div><strong>Lentil soup</strong><br><span style="color:var(--mid)">5 days fridge · freeze half immediately</span></div>
+      <div><strong>Homemade hummus</strong><br><span style="color:var(--mid)">5 days fridge in sealed jar</span></div>
+      <div><strong>Lemon-olive oil dressing</strong><br><span style="color:var(--mid)">1 week fridge · shake before using</span></div>
+      <div><strong>Smoothie freezer packs</strong><br><span style="color:var(--mid)">3 months frozen · blend from frozen</span></div>
+      <div><strong>Dave's Killer Bread</strong><br><span style="color:var(--mid)">Freeze half the loaf if not using quickly</span></div>
     </div>
   </div>
 </div><!-- /panel-prep -->
@@ -817,19 +788,19 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
     </div>
     <div class="sched-list">
       <div class="si2" onclick="togS(this)"><div class="si-time">6:30 AM</div><div class="si-icon ic-water">💧</div><div class="si-body"><div class="si-title">Drink 500 ml water immediately</div><div class="si-detail">Before matcha, before anything else</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-detail">1 tsp matcha + 8 oz steamed almond milk</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado mashed, 1 hard boiled egg sliced on top, red pepper flakes, arugula</div><div class="si-macros"><span class="sm-p">P:11g</span><span class="sm-f">F:5g</span><span class="sm-t">T:13g</span><span style="color:var(--muted)">330 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil & Quinoa Bowl</div><div class="si-detail">½ cup batch lentils, ½ cup quinoa, Sunday's roasted veg, lemon-olive oil dressing, feta</div><div class="si-macros"><span class="sm-p">P:22g</span><span class="sm-f">F:10g</span><span class="sm-t">T:10g</span><span style="color:var(--muted)">420 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🍎</div><div class="si-body"><div class="si-title">Snack — Apple + Almond Butter</div><div class="si-macros"><span class="sm-p">P:4g</span><span class="sm-f">F:5g</span><span class="sm-t">T:9g</span><span style="color:var(--muted)">200 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-detail">1 tsp matcha + 8 oz steamed almond milk</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado mashed, 1 hard boiled egg sliced on top, red pepper flakes, arugula</div><div class="si-macros"><span class="sm-p">P:11g</span><span class="sm-f">F:5g</span><span class="sm-t">T:13g</span><span style="color:var(--mid)">330 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil & Quinoa Bowl</div><div class="si-detail">½ cup batch lentils, ½ cup quinoa, Sunday's roasted veg, lemon-olive oil dressing, feta</div><div class="si-macros"><span class="sm-p">P:22g</span><span class="sm-f">F:10g</span><span class="sm-t">T:10g</span><span style="color:var(--mid)">420 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🍎</div><div class="si-body"><div class="si-title">Snack — Apple + Almond Butter</div><div class="si-macros"><span class="sm-p">P:4g</span><span class="sm-f">F:5g</span><span class="sm-t">T:9g</span><span style="color:var(--mid)">200 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">5:00 PM</div><div class="si-icon ic-wk">🏋️</div><div class="si-body"><div class="si-title">WORKOUT — Full Body Strength A (45–55 min)</div><div class="si-detail">Goblet squat · RDL · Chest press · DB Row · Lateral raises · Plank · Dead bug</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🐟</div><div class="si-body"><div class="si-title">Dinner — Italian Herb Salmon + Asparagus & Rice</div><div class="si-detail">4 oz salmon (cook fresh 12 min), asparagus, ½ cup batch brown rice</div><div class="si-macros"><span class="sm-p">P:32g</span><span class="sm-f">F:5g</span><span class="sm-t">T:12g</span><span style="color:var(--muted)">480 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Cottage Cheese + Cucumber</div><div class="si-macros"><span class="sm-p">P:14g</span><span class="sm-f">F:0g</span><span class="sm-t">T:1g</span><span style="color:var(--muted)">75 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🐟</div><div class="si-body"><div class="si-title">Dinner — Italian Herb Salmon + Asparagus & Rice</div><div class="si-detail">4 oz salmon (cook fresh 12 min), asparagus, ½ cup batch brown rice</div><div class="si-macros"><span class="sm-p">P:32g</span><span class="sm-f">F:5g</span><span class="sm-t">T:12g</span><span style="color:var(--mid)">480 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Cottage Cheese + Cucumber</div><div class="si-macros"><span class="sm-p">P:14g</span><span class="sm-f">F:0g</span><span class="sm-t">T:1g</span><span style="color:var(--mid)">75 cal</span></div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,575</span><span class="dt-label">Total cal</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--pro)">128g</span><span class="dt-label">Protein</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fib)">27g</span><span class="dt-label">Fiber</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fat)">46g</span><span class="dt-label">Fat</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">128g</span><span class="dt-label">Protein</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">27g</span><span class="dt-label">Fiber</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">46g</span><span class="dt-label">Fat</span></div>
     </div>
   </div>
 
@@ -842,20 +813,20 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
     </div>
     <div class="sched-list">
       <div class="si2" onclick="togS(this)"><div class="si-time">6:30 AM</div><div class="si-icon ic-water">💧</div><div class="si-body"><div class="si-title">Drink 500 ml water on waking</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Breakfast — Greek Yogurt Granola Bowl</div><div class="si-detail">¾ cup Greek yogurt, ½ cup berries, granola, honey</div><div class="si-macros"><span class="sm-p">P:18g</span><span class="sm-f">F:4g</span><span class="sm-t">T:7g</span><span style="color:var(--muted)">330 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Breakfast — Greek Yogurt Granola Bowl</div><div class="si-detail">¾ cup Greek yogurt, ½ cup berries, granola, honey</div><div class="si-macros"><span class="sm-p">P:18g</span><span class="sm-f">F:4g</span><span class="sm-t">T:7g</span><span style="color:var(--mid)">330 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">7:45 AM</div><div class="si-icon ic-wk">🔥</div><div class="si-body"><div class="si-title">WORKOUT — HIIT Cardio (30–35 min)</div><div class="si-detail">5 min warm-up · 10 rounds: 20 sec sprint / 40 sec walk · 10 min cool-down + stretch</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Asian Chicken Bowl</div><div class="si-detail">Batch chicken sliced, batch brown rice, reheated broccoli & snap peas, soy-ginger sauce</div><div class="si-macros"><span class="sm-p">P:36g</span><span class="sm-f">F:7g</span><span class="sm-t">T:8g</span><span style="color:var(--muted)">440 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🫛</div><div class="si-body"><div class="si-title">Snack — Edamame + Rice Cakes</div><div class="si-macros"><span class="sm-p">P:10g</span><span class="sm-f">F:4g</span><span class="sm-t">T:3g</span><span style="color:var(--muted)">190 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍽️</div><div class="si-body"><div class="si-title">Dinner — Miso Chickpea & Broccoli Bowl</div><div class="si-detail">Chickpeas in miso-garlic glaze, reheated broccoli, ½ cup batch brown rice</div><div class="si-macros"><span class="sm-p">P:20g</span><span class="sm-f">F:9g</span><span class="sm-t">T:11g</span><span style="color:var(--muted)">445 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Greek Yogurt + Cinnamon + Honey</div><div class="si-macros"><span class="sm-p">P:17g</span><span class="sm-f">F:0g</span><span class="sm-t">T:0g</span><span style="color:var(--muted)">90 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Asian Chicken Bowl</div><div class="si-detail">Batch chicken sliced, batch brown rice, reheated broccoli & snap peas, soy-ginger sauce</div><div class="si-macros"><span class="sm-p">P:36g</span><span class="sm-f">F:7g</span><span class="sm-t">T:8g</span><span style="color:var(--mid)">440 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🫛</div><div class="si-body"><div class="si-title">Snack — Edamame + Rice Cakes</div><div class="si-macros"><span class="sm-p">P:10g</span><span class="sm-f">F:4g</span><span class="sm-t">T:3g</span><span style="color:var(--mid)">190 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍽️</div><div class="si-body"><div class="si-title">Dinner — Miso Chickpea & Broccoli Bowl</div><div class="si-detail">Chickpeas in miso-garlic glaze, reheated broccoli, ½ cup batch brown rice</div><div class="si-macros"><span class="sm-p">P:20g</span><span class="sm-f">F:9g</span><span class="sm-t">T:11g</span><span style="color:var(--mid)">445 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Greek Yogurt + Cinnamon + Honey</div><div class="si-macros"><span class="sm-p">P:17g</span><span class="sm-f">F:0g</span><span class="sm-t">T:0g</span><span style="color:var(--mid)">90 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon ic-rest">📝</div><div class="si-body"><div class="si-title">Prep overnight oats for Wednesday morning</div><div class="si-detail">Mix ½ cup oats + ¾ cup almond milk + 1 tbsp flaxseed + 1 tbsp honey in jar · refrigerate · add strawberries in morning</div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,565</span><span class="dt-label">Total cal</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--pro)">131g</span><span class="dt-label">Protein</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fib)">26g</span><span class="dt-label">Fiber</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fat)">44g</span><span class="dt-label">Fat</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">131g</span><span class="dt-label">Protein</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">26g</span><span class="dt-label">Fiber</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">44g</span><span class="dt-label">Fat</span></div>
     </div>
   </div>
 
@@ -868,19 +839,19 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
     </div>
     <div class="sched-list">
       <div class="si2" onclick="togS(this)"><div class="si-time">6:30 AM</div><div class="si-icon ic-water">💧</div><div class="si-body"><div class="si-title">Drink 500 ml water on waking</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🥣</div><div class="si-body"><div class="si-title">Breakfast — Overnight Oats</div><div class="si-detail">Grab from fridge, add ½ cup strawberries</div><div class="si-macros"><span class="sm-p">P:8g</span><span class="sm-f">F:7g</span><span class="sm-t">T:6g</span><span style="color:var(--muted)">350 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Tuna Niçoise Salad</div><div class="si-detail">4 oz tuna, arugula & greens, cherry tomatoes, cucumber, 1 hard boiled egg, olives, red wine vinaigrette</div><div class="si-macros"><span class="sm-p">P:38g</span><span class="sm-f">F:4g</span><span class="sm-t">T:14g</span><span style="color:var(--muted)">390 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🥤</div><div class="si-body"><div class="si-title">Snack — Protein Smoothie</div><div class="si-detail">Blend Sunday freezer pack + 1 cup almond milk + 1 scoop protein powder</div><div class="si-macros"><span class="sm-p">P:24g</span><span class="sm-f">F:2g</span><span class="sm-t">T:3g</span><span style="color:var(--muted)">200 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🥣</div><div class="si-body"><div class="si-title">Breakfast — Overnight Oats</div><div class="si-detail">Grab from fridge, add ½ cup strawberries</div><div class="si-macros"><span class="sm-p">P:8g</span><span class="sm-f">F:7g</span><span class="sm-t">T:6g</span><span style="color:var(--mid)">350 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Tuna Niçoise Salad</div><div class="si-detail">4 oz tuna, arugula & greens, cherry tomatoes, cucumber, 1 hard boiled egg, olives, red wine vinaigrette</div><div class="si-macros"><span class="sm-p">P:38g</span><span class="sm-f">F:4g</span><span class="sm-t">T:14g</span><span style="color:var(--mid)">390 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🥤</div><div class="si-body"><div class="si-title">Snack — Protein Smoothie</div><div class="si-detail">Blend Sunday freezer pack + 1 cup almond milk + 1 scoop protein powder</div><div class="si-macros"><span class="sm-p">P:24g</span><span class="sm-f">F:2g</span><span class="sm-t">T:3g</span><span style="color:var(--mid)">200 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">5:00 PM</div><div class="si-icon ic-wk">💪</div><div class="si-body"><div class="si-title">WORKOUT — Full Body Strength B (45–55 min)</div><div class="si-detail">Bulgarian split squat · Hip thrust · Shoulder press · Lat pulldown · Triceps · Bicycle crunches · Side plank</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍝</div><div class="si-body"><div class="si-title">Dinner — Shrimp & Tomato Orzo</div><div class="si-detail">4 oz shrimp (5 min), orzo, canned tomatoes, garlic, olive oil, basil, Parmesan</div><div class="si-macros"><span class="sm-p">P:32g</span><span class="sm-f">F:4g</span><span class="sm-t">T:11g</span><span style="color:var(--muted)">490 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Dark Chocolate + Herbal Tea</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:1g</span><span class="sm-t">T:4g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍝</div><div class="si-body"><div class="si-title">Dinner — Shrimp & Tomato Orzo</div><div class="si-detail">4 oz shrimp (5 min), orzo, canned tomatoes, garlic, olive oil, basil, Parmesan</div><div class="si-macros"><span class="sm-p">P:32g</span><span class="sm-f">F:4g</span><span class="sm-t">T:11g</span><span style="color:var(--mid)">490 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Dark Chocolate + Herbal Tea</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:1g</span><span class="sm-t">T:4g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,570</span><span class="dt-label">Total cal</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--pro)">122g</span><span class="dt-label">Protein</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fib)">24g</span><span class="dt-label">Fiber</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fat)">47g</span><span class="dt-label">Fat</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">122g</span><span class="dt-label">Protein</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">24g</span><span class="dt-label">Fiber</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">47g</span><span class="dt-label">Fat</span></div>
     </div>
   </div>
 
@@ -893,19 +864,19 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
     </div>
     <div class="sched-list">
       <div class="si2" onclick="togS(this)"><div class="si-time">6:30 AM</div><div class="si-icon ic-water">💧</div><div class="si-body"><div class="si-title">Drink 500 ml water on waking</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-wk">🧘</div><div class="si-body"><div class="si-title">WORKOUT — Yoga / Active Recovery (30–40 min)</div><div class="si-detail">20–25 min yoga flow · 10 min foam rolling quads, IT band, hamstrings · optional 20 min brisk walk</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:00 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Breakfast — Veggie Scramble + Toast</div><div class="si-detail">2 eggs + 2 whites, reheated Sunday roasted veg, Dave's Killer Bread, thin avocado</div><div class="si-macros"><span class="sm-p">P:22g</span><span class="sm-f">F:4g</span><span class="sm-t">T:12g</span><span style="color:var(--muted)">335 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup + Hard Boiled Egg</div><div class="si-detail">2 cups batch lentil soup reheated, 1 hard boiled egg halved on top, baby carrots</div><div class="si-macros"><span class="sm-p">P:24g</span><span class="sm-f">F:15g</span><span class="sm-t">T:4g</span><span style="color:var(--muted)">380 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🥕</div><div class="si-body"><div class="si-title">Snack — Martha Stewart Hummus + Veggies</div><div class="si-detail">3 tbsp homemade hummus, pre-cut celery, bell pepper, baby carrots (all prepped Sunday)</div><div class="si-macros"><span class="sm-p">P:4g</span><span class="sm-f">F:4g</span><span class="sm-t">T:5g</span><span style="color:var(--muted)">155 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍽️</div><div class="si-body"><div class="si-title">Dinner — Shrimp Scampi with Orzo</div><div class="si-detail">4 oz shrimp (5 min), orzo, white wine, garlic, lemon, parsley, Parmesan</div><div class="si-macros"><span class="sm-p">P:30g</span><span class="sm-f">F:2g</span><span class="sm-t">T:11g</span><span style="color:var(--muted)">430 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — 2 Mini Babybel Light + Cherry Tomatoes</div><div class="si-detail">Satisfying real cheese without the raw nuts</div><div class="si-macros"><span class="sm-p">P:8g</span><span class="sm-f">F:0g</span><span class="sm-t">T:5g</span><span style="color:var(--muted)">100 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:00 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Breakfast — Veggie Scramble + Toast</div><div class="si-detail">2 eggs + 2 whites, reheated Sunday roasted veg, Dave's Killer Bread, thin avocado</div><div class="si-macros"><span class="sm-p">P:22g</span><span class="sm-f">F:4g</span><span class="sm-t">T:12g</span><span style="color:var(--mid)">335 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup + Hard Boiled Egg</div><div class="si-detail">2 cups batch lentil soup reheated, 1 hard boiled egg halved on top, baby carrots</div><div class="si-macros"><span class="sm-p">P:24g</span><span class="sm-f">F:15g</span><span class="sm-t">T:4g</span><span style="color:var(--mid)">380 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🥕</div><div class="si-body"><div class="si-title">Snack — Martha Stewart Hummus + Veggies</div><div class="si-detail">3 tbsp homemade hummus, pre-cut celery, bell pepper, baby carrots (all prepped Sunday)</div><div class="si-macros"><span class="sm-p">P:4g</span><span class="sm-f">F:4g</span><span class="sm-t">T:5g</span><span style="color:var(--mid)">155 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍽️</div><div class="si-body"><div class="si-title">Dinner — Shrimp Scampi with Orzo</div><div class="si-detail">4 oz shrimp (5 min), orzo, white wine, garlic, lemon, parsley, Parmesan</div><div class="si-macros"><span class="sm-p">P:30g</span><span class="sm-f">F:2g</span><span class="sm-t">T:11g</span><span style="color:var(--mid)">430 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — 2 Mini Babybel Light + Cherry Tomatoes</div><div class="si-detail">Satisfying real cheese without the raw nuts</div><div class="si-macros"><span class="sm-p">P:8g</span><span class="sm-f">F:0g</span><span class="sm-t">T:5g</span><span style="color:var(--mid)">100 cal</span></div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,560</span><span class="dt-label">Total cal</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--pro)">118g</span><span class="dt-label">Protein</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fib)">30g</span><span class="dt-label">Fiber</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fat)">43g</span><span class="dt-label">Fat</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">118g</span><span class="dt-label">Protein</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">30g</span><span class="dt-label">Fiber</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">43g</span><span class="dt-label">Fat</span></div>
     </div>
   </div>
 
@@ -918,19 +889,19 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
     </div>
     <div class="sched-list">
       <div class="si2" onclick="togS(this)"><div class="si-time">6:30 AM</div><div class="si-icon ic-water">💧</div><div class="si-body"><div class="si-title">Drink 500 ml water on waking</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado mashed with lemon, capers & thin red onion, 1 hard boiled egg sliced on top — briny & bright, no smoked fish needed</div><div class="si-macros"><span class="sm-p">P:11g</span><span class="sm-f">F:5g</span><span class="sm-t">T:13g</span><span style="color:var(--muted)">340 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🫘</div><div class="si-body"><div class="si-title">Lunch — Chickpea Stew with Spinach</div><div class="si-detail">Chickpeas in turmeric-garlic broth, wilted spinach, Greek yogurt instead of coconut milk, Dave's bread for dipping</div><div class="si-macros"><span class="sm-p">P:20g</span><span class="sm-f">F:12g</span><span class="sm-t">T:10g</span><span style="color:var(--muted)">420 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🍍</div><div class="si-body"><div class="si-title">Snack — Cottage Cheese + Pineapple</div><div class="si-macros"><span class="sm-p">P:14g</span><span class="sm-f">F:1g</span><span class="sm-t">T:1g</span><span style="color:var(--muted)">145 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:40 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 AM</div><div class="si-icon ic-meal">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado mashed with lemon, capers & thin red onion, 1 hard boiled egg sliced on top — briny & bright, no smoked fish needed</div><div class="si-macros"><span class="sm-p">P:11g</span><span class="sm-f">F:5g</span><span class="sm-t">T:13g</span><span style="color:var(--mid)">340 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:00 PM</div><div class="si-icon ic-meal">🫘</div><div class="si-body"><div class="si-title">Lunch — Chickpea Stew with Spinach</div><div class="si-detail">Chickpeas in turmeric-garlic broth, wilted spinach, Greek yogurt instead of coconut milk, Dave's bread for dipping</div><div class="si-macros"><span class="sm-p">P:20g</span><span class="sm-f">F:12g</span><span class="sm-t">T:10g</span><span style="color:var(--mid)">420 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🍍</div><div class="si-body"><div class="si-title">Snack — Cottage Cheese + Pineapple</div><div class="si-macros"><span class="sm-p">P:14g</span><span class="sm-f">F:1g</span><span class="sm-t">T:1g</span><span style="color:var(--mid)">145 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">5:00 PM</div><div class="si-icon ic-wk">🏆</div><div class="si-body"><div class="si-title">WORKOUT — Full Body Strength C (45–55 min)</div><div class="si-detail">Sumo deadlift · Walking lunges · Chest fly · Reverse lunge twist · Incline DB row · Leg raises</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍗</div><div class="si-body"><div class="si-title">Dinner — Italian Chicken Breast + White Bean Salad</div><div class="si-detail">Batch chicken reheated, warm cannellini beans, cherry tomatoes, arugula, lemon-olive oil</div><div class="si-macros"><span class="sm-p">P:42g</span><span class="sm-f">F:8g</span><span class="sm-t">T:12g</span><span style="color:var(--muted)">470 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Herbal Tea + Dark Chocolate (2 squares)</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:1g</span><span class="sm-t">T:4g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🍗</div><div class="si-body"><div class="si-title">Dinner — Italian Chicken Breast + White Bean Salad</div><div class="si-detail">Batch chicken reheated, warm cannellini beans, cherry tomatoes, arugula, lemon-olive oil</div><div class="si-macros"><span class="sm-p">P:42g</span><span class="sm-f">F:8g</span><span class="sm-t">T:12g</span><span style="color:var(--mid)">470 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Herbal Tea + Dark Chocolate (2 squares)</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:1g</span><span class="sm-t">T:4g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,535</span><span class="dt-label">Total cal</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--pro)">129g</span><span class="dt-label">Protein</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fib)">23g</span><span class="dt-label">Fiber</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fat)">47g</span><span class="dt-label">Fat</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">129g</span><span class="dt-label">Protein</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">23g</span><span class="dt-label">Fiber</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">47g</span><span class="dt-label">Fat</span></div>
     </div>
   </div>
 
@@ -943,18 +914,18 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
     </div>
     <div class="sched-list">
       <div class="si2" onclick="togS(this)"><div class="si-time">7:30 AM</div><div class="si-icon ic-water">💧</div><div class="si-body"><div class="si-title">Drink 500 ml water on waking</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:45 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:45 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon ic-wk">🚶</div><div class="si-body"><div class="si-title">WORKOUT — Zone 2 Cardio (45–60 min)</div><div class="si-detail">Brisk walk, jog, cycling, or swim · conversational pace · target HR 120–140 bpm · 10 min cool-down + stretch</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">10:30 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Brunch — Shakshuka + Hard Boiled Eggs & Feta</div><div class="si-detail">Spiced tomato sauce (15 min), 2 hard boiled eggs halved on top, feta, herbs, Dave's Killer Bread</div><div class="si-macros"><span class="sm-p">P:22g</span><span class="sm-f">F:5g</span><span class="sm-t">T:16g</span><span style="color:var(--muted)">420 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">2:30 PM</div><div class="si-icon ic-meal">🥤</div><div class="si-body"><div class="si-title">Snack — Protein Smoothie</div><div class="si-detail">Blend Sunday freezer pack + almond milk + protein powder</div><div class="si-macros"><span class="sm-p">P:24g</span><span class="sm-f">F:3g</span><span class="sm-t">T:3g</span><span style="color:var(--muted)">210 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🐟</div><div class="si-body"><div class="si-title">Dinner — Miso Butter Salmon Bowl</div><div class="si-detail">4 oz salmon, miso-butter glaze (8 min broil, no sesame), roasted cabbage & mushrooms, batch brown rice</div><div class="si-macros"><span class="sm-p">P:34g</span><span class="sm-f">F:6g</span><span class="sm-t">T:16g</span><span style="color:var(--muted)">490 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Greek Yogurt Parfait + Berries + Honey</div><div class="si-macros"><span class="sm-p">P:10g</span><span class="sm-f">F:1g</span><span class="sm-t">T:0g</span><span style="color:var(--muted)">130 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">10:30 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Brunch — Shakshuka + Hard Boiled Eggs & Feta</div><div class="si-detail">Spiced tomato sauce (15 min), 2 hard boiled eggs halved on top, feta, herbs, Dave's Killer Bread</div><div class="si-macros"><span class="sm-p">P:22g</span><span class="sm-f">F:5g</span><span class="sm-t">T:16g</span><span style="color:var(--mid)">420 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">2:30 PM</div><div class="si-icon ic-meal">🥤</div><div class="si-body"><div class="si-title">Snack — Protein Smoothie</div><div class="si-detail">Blend Sunday freezer pack + almond milk + protein powder</div><div class="si-macros"><span class="sm-p">P:24g</span><span class="sm-f">F:3g</span><span class="sm-t">T:3g</span><span style="color:var(--mid)">210 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon ic-meal">🐟</div><div class="si-body"><div class="si-title">Dinner — Miso Butter Salmon Bowl</div><div class="si-detail">4 oz salmon, miso-butter glaze (8 min broil, no sesame), roasted cabbage & mushrooms, batch brown rice</div><div class="si-macros"><span class="sm-p">P:34g</span><span class="sm-f">F:6g</span><span class="sm-t">T:16g</span><span style="color:var(--mid)">490 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Greek Yogurt Parfait + Berries + Honey</div><div class="si-macros"><span class="sm-p">P:10g</span><span class="sm-f">F:1g</span><span class="sm-t">T:0g</span><span style="color:var(--mid)">130 cal</span></div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,320</span><span class="dt-label">Meals cal</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--pro)">125g</span><span class="dt-label">Protein</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fib)">20g</span><span class="dt-label">Fiber</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fat)">47g</span><span class="dt-label">Fat</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">125g</span><span class="dt-label">Protein</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">20g</span><span class="dt-label">Fiber</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">47g</span><span class="dt-label">Fat</span></div>
     </div>
   </div>
 
@@ -967,20 +938,20 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
     </div>
     <div class="sched-list">
       <div class="si2" onclick="togS(this)"><div class="si-time">7:30 AM</div><div class="si-icon ic-water">💧</div><div class="si-body"><div class="si-title">Drink 500 ml water + squeeze of lemon</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:45 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--muted)">70 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:00 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Breakfast — Greek Yogurt + Berries + Granola</div><div class="si-detail">Quick while batch cooking starts</div><div class="si-macros"><span class="sm-p">P:18g</span><span class="sm-f">F:4g</span><span class="sm-t">T:4g</span><span style="color:var(--muted)">290 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:45 AM</div><div class="si-icon ic-ritual">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span class="sm-p">P:1g</span><span class="sm-f">F:0g</span><span class="sm-t">T:2g</span><span style="color:var(--mid)">70 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:00 AM</div><div class="si-icon ic-meal">🍳</div><div class="si-body"><div class="si-title">Breakfast — Greek Yogurt + Berries + Granola</div><div class="si-detail">Quick while batch cooking starts</div><div class="si-macros"><span class="sm-p">P:18g</span><span class="sm-f">F:4g</span><span class="sm-t">T:4g</span><span style="color:var(--mid)">290 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon ic-rest">🍳</div><div class="si-body"><div class="si-title">START MEAL PREP — ~90 minutes in parallel</div><div class="si-detail">Oven on with chicken + veg · stove: eggs boiling, rice cooking, lentil soup simmering · counter: blend hummus, make dressings, freeze smoothie packs, wash & cut snack veg · everything finishes together</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:30 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup (first bowl)</div><div class="si-detail">2 cups freshly made · taste test · store the rest</div><div class="si-macros"><span class="sm-p">P:18g</span><span class="sm-f">F:14g</span><span class="sm-t">T:3g</span><span style="color:var(--muted)">380 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🍎</div><div class="si-body"><div class="si-title">Snack — Apple + Almond Butter</div><div class="si-macros"><span class="sm-p">P:4g</span><span class="sm-f">F:5g</span><span class="sm-t">T:9g</span><span style="color:var(--muted)">200 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:00 PM</div><div class="si-icon ic-meal">🍗</div><div class="si-body"><div class="si-title">Dinner — Sheet Pan Chicken + Roasted Veg</div><div class="si-detail">One portion of the batch · veg already roasted · refrigerate the rest for Tue & Fri</div><div class="si-macros"><span class="sm-p">P:36g</span><span class="sm-f">F:6g</span><span class="sm-t">T:9g</span><span style="color:var(--muted)">470 cal</span></div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Cottage Cheese + Cherry Tomatoes</div><div class="si-macros"><span class="sm-p">P:14g</span><span class="sm-f">F:1g</span><span class="sm-t">T:1g</span><span style="color:var(--muted)">130 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:30 PM</div><div class="si-icon ic-meal">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup (first bowl)</div><div class="si-detail">2 cups freshly made · taste test · store the rest</div><div class="si-macros"><span class="sm-p">P:18g</span><span class="sm-f">F:14g</span><span class="sm-t">T:3g</span><span style="color:var(--mid)">380 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon ic-meal">🍎</div><div class="si-body"><div class="si-title">Snack — Apple + Almond Butter</div><div class="si-macros"><span class="sm-p">P:4g</span><span class="sm-f">F:5g</span><span class="sm-t">T:9g</span><span style="color:var(--mid)">200 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:00 PM</div><div class="si-icon ic-meal">🍗</div><div class="si-body"><div class="si-title">Dinner — Sheet Pan Chicken + Roasted Veg</div><div class="si-detail">One portion of the batch · veg already roasted · refrigerate the rest for Tue & Fri</div><div class="si-macros"><span class="sm-p">P:36g</span><span class="sm-f">F:6g</span><span class="sm-t">T:9g</span><span style="color:var(--mid)">470 cal</span></div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">8:30 PM</div><div class="si-icon ic-meal">🌙</div><div class="si-body"><div class="si-title">Evening — Cottage Cheese + Cherry Tomatoes</div><div class="si-macros"><span class="sm-p">P:14g</span><span class="sm-f">F:1g</span><span class="sm-t">T:1g</span><span style="color:var(--mid)">130 cal</span></div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:30 PM</div><div class="si-icon ic-rest">💤</div><div class="si-body"><div class="si-title">Aim for 7–8 hours sleep — lights out by 10 PM</div><div class="si-detail">Sleep drives cortisol regulation and fat loss at 40. Prioritize it like a workout.</div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,540</span><span class="dt-label">Total cal</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--pro)">124g</span><span class="dt-label">Protein</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fib)">28g</span><span class="dt-label">Fiber</span></div>
-      <div class="dt-item"><span class="dt-val" style="color:var(--fat)">44g</span><span class="dt-label">Fat</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">124g</span><span class="dt-label">Protein</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">28g</span><span class="dt-label">Fiber</span></div>
+      <div class="dt-item"><span class="dt-val" style="color:var(--black)">44g</span><span class="dt-label">Fat</span></div>
     </div>
   </div>
 
