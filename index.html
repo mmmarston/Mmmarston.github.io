@@ -13,27 +13,35 @@
 /* lavender chalk: #a896b4 / #d4c8dc / #ece6f0 */
 /* warm concrete: #b8a898 / #e8e0d6 / #f4f1ed */
 :root {
-  --olive:#5c5c3a;
-  --olive-mid:#7a7a4a;
-  --olive-pale:#d4d4b8;
-  --blue:#6b9aab;
-  --blue-mid:#8fadb8;
-  --blue-pale:#ddeaee;
-  --blue-lt:#edf4f7;
-  --lav:#8c7a9e;
-  --lav-mid:#a896b4;
-  --lav-pale:#d4c8dc;
-  --lav-lt:#ece6f0;
-  --concrete:#b8a898;
-  --concrete-lt:#e8e0d6;
-  --concrete-pale:#f4f1ed;
+  /* Photo palette — dark shades for text, light shades for backgrounds */
+  /* Olive (boot)      — dark text / medium header / pale tint           */
+  --olive:#3a3a22;
+  --olive-mid:#50502e;
+  --olive-pale:#e0e0c8;
+  --olive-bg:#f6f6ef;
+  /* Dusty blue (chalk) — dark text / medium gradient / pale tint        */
+  --blue:#1c5468;
+  --blue-mid:#2a6e84;
+  --blue-pale:#bdd8e4;
+  --blue-lt:#e8f3f7;
+  /* Lavender (chalk)  — dark text / medium gradient / pale tint         */
+  --lav:#3c2c52;
+  --lav-mid:#58426e;
+  --lav-pale:#d8cce6;
+  --lav-lt:#f0ecf8;
+  /* Warm concrete     — surfaces & borders only, never tiny text        */
+  --concrete:#6e6258;
+  --concrete-lt:#ece4dc;
+  --concrete-pale:#f5f0eb;
+  /* Neutrals                                                            */
   --offwhite:#faf8f5;
-  --charcoal:#2e2c28;
-  --muted:#7a746c;
-  --border:#d8d0c8;
-  --pro:#5c5c3a;
-  --fib:#6b9aab;
-  --fat:#8c7a9e;
+  --charcoal:#18160e;
+  --muted:#4a4440;
+  --border:#d0c8be;
+  /* Macro pill text — all dark enough on their pale backgrounds         */
+  --pro:#3a3a22;
+  --fib:#1c5468;
+  --fat:#3c2c52;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--charcoal);line-height:1.65;}
@@ -47,10 +55,10 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
 .hdr-inner{max-width:960px;margin:0 auto;}
 .hdr-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;opacity:.6;margin-bottom:8px;}
 .hdr h1{font-family:‘Lora’,serif;font-size:clamp(24px,4vw,38px);font-weight:700;margin-bottom:8px;}
-.hdr h1 em{font-style:italic;color:#c8c89e;}
+.hdr h1 em{font-style:italic;color:#e8e8d0;}
 .hdr-sub{font-size:13px;opacity:.72;margin-bottom:6px;}
 .allergy-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:7px 13px;font-size:12px;margin-bottom:22px;}
-.allergy-pill strong{color:#ddeaee;}
+.allergy-pill strong{color:#f0f8fb;}
 
 /* ── TABS ── */
 .tabs{display:flex;gap:3px;position:relative;z-index:2;flex-wrap:wrap;}
@@ -161,7 +169,7 @@ a:hover{color:var(--lav);border-color:var(--lav-pale);}
 .prep-intro p{font-size:13px;opacity:.86;}
 .prep-section{margin-bottom:24px;}
 .prep-sec-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;padding:11px 16px;border-radius:11px 11px 0 0;border:1px solid var(–border);}
-.ps-sun{background:var(–concrete-pale);color:var(–concrete);border-color:#d0c4b8;}
+.ps-sun{background:var(–concrete-pale);color:var(–charcoal);border-color:#d0c4b8;}
 .ps-weekly{background:var(–olive-pale);color:var(–olive);border-color:#c4c4a0;}
 .ps-daily{background:var(–blue-lt);color:var(–blue);border-color:#c0d8e2;}
 .prep-items-wrap{background:white;border:1px solid var(–border);border-top:none;border-radius:0 0 11px 11px;overflow:hidden;}
