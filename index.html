@@ -53,48 +53,89 @@ border-radius: 6px; padding: 7px 13px; font-size: 12px;
 color: rgba(255,255,255,.8); margin-bottom: 24px;
 }
 
-/* ── TAB BAR — fixed bottom on mobile, inline on desktop */
+/* ── TAB BAR ──
+Mobile:  fixed to bottom of screen, full width, icon+label stacked
+Desktop: sits at top of .wrap as a horizontal row of tabs
+*/
+
+/* Mobile default: fixed bottom nav */
 .tab-bar {
 display: flex;
-background: #111111;
 position: fixed;
 bottom: 0; left: 0; right: 0;
-z-index: 100;
-border-top: 1px solid rgba(255,255,255,.1);
+z-index: 1000;
+background: #111111;
+border-top: 1px solid rgba(255,255,255,.12);
 padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .tab-btn {
-flex: 1; display: flex; flex-direction: column;
-align-items: center; justify-content: center; gap: 3px;
-padding: 10px 4px; background: none; border: none;
-cursor: pointer; font-family: inherit;
-color: rgba(255,255,255,.4); font-size: 10px; font-weight: 600;
-letter-spacing: .3px; text-transform: uppercase; transition: color .15s;
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 3px;
+padding: 9px 4px 10px;
+background: none;
+border: none;
+cursor: pointer;
+font-family: inherit;
+color: rgba(255,255,255,.38);
+font-size: 10px;
+font-weight: 600;
+letter-spacing: .4px;
+text-transform: uppercase;
+transition: color .15s;
+-webkit-tap-highlight-color: transparent;
 }
-.tab-btn .ti { font-size: 19px; line-height: 1; }
-.tab-btn:hover { color: rgba(255,255,255,.75); }
+.tab-btn .ti { font-size: 20px; line-height: 1; }
+.tab-btn:hover  { color: rgba(255,255,255,.7); }
 .tab-btn.active { color: #FFFFFF; }
 
+/* Desktop: horizontal tabs at top of content area */
 @media(min-width: 640px) {
-body { padding-bottom: 40px; }
+body { padding-bottom: 32px; }
 .tab-bar {
-position: static; background: #111111;
-border-top: none; max-width: 700px;
-margin: 0 auto; padding: 0; gap: 3px;
+position: static;
+background: transparent;
+border-top: none;
+border-bottom: none;
+padding: 0;
+max-width: 700px;
+margin: 0 auto 0;
+gap: 4px;
 }
 .tab-btn {
-flex-direction: row; gap: 6px;
-padding: 11px 18px; border-radius: 8px 8px 0 0;
-font-size: 13px; text-transform: none; letter-spacing: 0;
-background: rgba(255,255,255,.07);
+flex-direction: row;
+gap: 7px;
+padding: 10px 18px;
+border-radius: 8px 8px 0 0;
+font-size: 13px;
+font-weight: 600;
+text-transform: none;
+letter-spacing: 0;
+color: var(–mid);
+background: var(–white);
+border: 1px solid var(–border);
+border-bottom: none;
 }
-.tab-btn .ti { font-size: 14px; }
-.tab-btn.active { background: var(–cream); color: var(–ink); }
-.tab-btn:hover:not(.active) { background: rgba(255,255,255,.14); color: rgba(255,255,255,.9); }
+.tab-btn .ti { font-size: 15px; }
+.tab-btn.active {
+background: var(–cream);
+color: var(–ink);
+border-color: var(–border);
+border-bottom: 2px solid var(–cream);
+margin-bottom: -1px;
+}
+.tab-btn:hover:not(.active) {
+background: var(–light);
+color: var(–ink);
+}
 }
 
 /* ── CONTENT ── */
-.wrap { max-width: 700px; margin: 0 auto; padding: 26px 16px 20px; }
+.wrap { max-width: 700px; margin: 0 auto; padding: 0 16px 20px; }
+.wrap > .panel { padding-top: 26px; }
 .panel { display: none; }
 .panel.active { display: block; }
 .sec-title { font-size: 19px; font-weight: 700; color: var(–ink); margin-bottom: 4px; letter-spacing: -.3px; }
@@ -175,7 +216,7 @@ background: rgba(255,255,255,.07);
 .shop-item:last-child { border-bottom: none; }
 .shop-item:hover { background: var(–light); }
 .shop-item.checked .si-label { text-decoration: line-through; color: var(–mid); }
-.si-cb { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(–border); flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all .1s; }
+.si-cb { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(–ink); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all .1s; }
 .shop-item.checked .si-cb { background: var(–ink); border-color: var(–ink); }
 .si-ck { color: var(–white); font-size: 10px; display: none; }
 .shop-item.checked .si-ck { display: block; }
@@ -196,7 +237,7 @@ background: rgba(255,255,255,.07);
 .prep-row:hover { background: var(–light); }
 .prep-row.checked .pr-label { text-decoration: line-through; color: var(–mid); }
 .prep-row.checked .pr-note { opacity: .4; }
-.pr-cb { width: 17px; height: 17px; border-radius: 4px; border: 2px solid var(–border); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all .1s; }
+.pr-cb { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(–ink); flex-shrink: 0; margin-top: 0px; display: flex; align-items: center; justify-content: center; transition: all .1s; }
 .prep-row.checked .pr-cb { background: var(–ink); border-color: var(–ink); }
 .prep-row.checked .pr-cb::after { content: ‘\2713’; color: var(–white); font-size: 11px; font-weight: 700; }
 .pr-body { flex: 1; }
@@ -219,16 +260,16 @@ background: rgba(255,255,255,.07);
 .dhc-rst { background: var(–light); color: var(–ink); }
 .dhc-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .dhc h2 { font-size: 16px; font-weight: 700; letter-spacing: -.3px; }
-.dhc p { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 2px; }
+.dhc p { font-size: 11px; color: rgba(255,255,255,.75); margin-top: 2px; }
 .dhc-rst p { color: var(–mid); }
 .dhc-badges { display: flex; gap: 5px; flex-wrap: wrap; }
-.dhc-badge { background: rgba(255,255,255,.15); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 99px; color: rgba(255,255,255,.9); }
+.dhc-badge { background: rgba(255,255,255,.2); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 99px; color: #ffffff; }
 .dhc-rst .dhc-badge { background: var(–border); color: var(–mid); }
 
 .sched-list { display: flex; flex-direction: column; gap: 4px; }
 .si2 {
 display: grid;
-grid-template-columns: 62px 26px 1fr 18px;
+grid-template-columns: 62px 26px 1fr 24px;
 gap: 9px; align-items: start;
 padding: 9px 13px;
 background: var(–white); border: 1px solid var(–border);
@@ -247,7 +288,7 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 .si-detail { font-size: 11px; color: var(–mid); margin-top: 2px; line-height: 1.5; }
 .si-macros { font-size: 10px; margin-top: 3px; color: var(–mid); }
 .si-macros span { font-weight: 700; color: var(–ink); }
-.si-cb2 { width: 17px; height: 17px; border-radius: 4px; border: 2px solid var(–border); flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all .1s; }
+.si-cb2 { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(–ink); flex-shrink: 0; margin-top: 0px; display: flex; align-items: center; justify-content: center; transition: all .1s; }
 .si2.done .si-cb2 { background: var(–ink); border-color: var(–ink); }
 .si2.done .si-cb2::after { content: ‘\2713’; color: var(–white); font-size: 10px; font-weight: 700; }
 .si2.wb .si-cb2 { display: none; }
@@ -258,12 +299,92 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 .dt-label { font-size: 10px; color: var(–mid); text-transform: uppercase; letter-spacing: 1px; }
 
 @media(max-width: 380px) {
-.si2 { grid-template-columns: 54px 22px 1fr 16px; gap: 7px; padding: 8px 10px; }
+.si2 { grid-template-columns: 54px 22px 1fr 24px; gap: 7px; padding: 8px 10px; }
 .mt td { padding: 8px 10px; }
 .mt-time { width: 58px; }
 }
-</style>
 
+/* ── RUNNING MACRO TRACKER ── */
+.macro-tracker {
+background: var(–ink);
+color: var(–white);
+border-radius: 10px;
+padding: 12px 16px;
+margin-bottom: 12px;
+display: flex;
+align-items: center;
+gap: 0;
+flex-wrap: wrap;
+}
+.tracker-label {
+font-size: 11px;
+font-weight: 600;
+color: rgba(255,255,255,.55);
+text-transform: uppercase;
+letter-spacing: .5px;
+margin-right: 14px;
+white-space: nowrap;
+}
+.tracker-stats {
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+flex: 1;
+}
+.ts-item { text-align: center; }
+.ts-val {
+font-size: 18px;
+font-weight: 700;
+color: var(–white);
+display: block;
+letter-spacing: -.3px;
+transition: all .2s;
+}
+.ts-label {
+font-size: 9px;
+color: rgba(255,255,255,.5);
+text-transform: uppercase;
+letter-spacing: .8px;
+}
+.tracker-clear {
+background: rgba(255,255,255,.12);
+border: 1px solid rgba(255,255,255,.2);
+border-radius: 7px;
+padding: 6px 12px;
+font-size: 11px;
+font-weight: 600;
+color: rgba(255,255,255,.8);
+cursor: pointer;
+font-family: inherit;
+transition: all .15s;
+margin-left: auto;
+white-space: nowrap;
+}
+.tracker-clear:hover { background: rgba(255,255,255,.22); color: #fff; }
+
+/* ── CLEAR BUTTONS for Prep + Schedule ── */
+.tab-clear-btn {
+display: inline-block;
+background: var(–light);
+border: 1px solid var(–border);
+border-radius: 8px;
+padding: 7px 14px;
+font-size: 12px;
+font-weight: 600;
+color: var(–mid);
+cursor: pointer;
+font-family: inherit;
+transition: all .15s;
+margin-top: 12px;
+}
+.tab-clear-btn:hover { background: var(–ink); color: var(–white); border-color: var(–ink); }
+
+/* recipe link inside schedule rows */
+.si-recipe { font-size: 11px; font-weight: 600; color: var(–mid); text-decoration: underline; text-underline-offset: 2px; margin-top: 3px; display: inline-block; }
+.si-recipe:hover { color: var(–ink); }
+.si-nyt { display: inline-block; background: var(–ink); color: var(–white); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; margin-right: 3px; vertical-align: middle; }
+
+</style>
 </head>
 <body>
 
@@ -273,14 +394,17 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
     <h1>Your Full<br><em>Weekly Planner</em></h1>
     <div class="hdr-sub">Meal Plan · Shopping · Prep · Daily Schedule</div>
     <div class="allergy-pill">⚠️ Sesame-free · Coconut-free · Chicken Breast · Hard Boiled Eggs</div>
-    <div class="tab-bar">
-      <button class="tab-btn active" onclick="switchTab('meals',this)"><span class="ti">🥗</span><span>Meals</span></button>
-      <button class="tab-btn" onclick="switchTab('shop',this)"><span class="ti">🛒</span><span>Shopping</span></button>
-      <button class="tab-btn" onclick="switchTab('prep',this)"><span class="ti">🍳</span><span>Prep</span></button>
-      <button class="tab-btn" onclick="switchTab('sched',this)"><span class="ti">📅</span><span>Schedule</span></button>
-    </div>
   </div>
 </div>
+
+<!-- Tab bar: fixed bottom on mobile, shown at top of wrap on desktop -->
+
+<nav class="tab-bar" id="main-tabs">
+  <button class="tab-btn active" onclick="switchTab('meals',this)"><span class="ti">🥗</span><span>Meals</span></button>
+  <button class="tab-btn" onclick="switchTab('shop',this)"><span class="ti">🛒</span><span>Shopping</span></button>
+  <button class="tab-btn" onclick="switchTab('prep',this)"><span class="ti">🍳</span><span>Prep</span></button>
+  <button class="tab-btn" onclick="switchTab('sched',this)"><span class="ti">📅</span><span>Schedule</span></button>
+</nav>
 
 <div class="wrap">
 
@@ -590,7 +714,9 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
       <div class="prep-row" onclick="togP(this)"><div class="pr-cb"></div><div class="pr-body"><div class="pr-label">Every morning: fill 2.5L water bottle</div><div class="pr-note">Before matcha · refill a 32 oz bottle 2–3× through the day</div></div><div class="pr-time">1 min</div></div>
     </div>
   </div>
-  <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+  <button class="tab-clear-btn" onclick="clearPrep()">↺ Uncheck all prep tasks</button>
+
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-top:14px;">
     <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:11px;">📦 Storage Guide</div>
     <div class="storage-grid">
       <div><strong>Batch chicken breast</strong><span>4 days fridge · reheat in pan with splash of water</span></div>
@@ -623,16 +749,26 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 
   <div class="day-panel active" id="dp-mon">
     <div class="dhc"><div class="dhc-top"><div><h2>Monday — Strength A</h2><p>💪 Full Body Strength A · 45–55 min · after meetings</p></div><div class="dhc-badges"><div class="dhc-badge">~1,500 cal</div><div class="dhc-badge">P:128g</div><div class="dhc-badge">F:27g</div></div></div></div>
-    <div class="sched-list">
+      <div class="macro-tracker" id="tracker-mon">
+    <span class="tracker-label">Eaten today</span>
+    <div class="tracker-stats">
+      <div class="ts-item"><span class="ts-val" id="tmon-cal">0</span><span class="ts-label">cal</span></div>
+      <div class="ts-item"><span class="ts-val" id="tmon-pro">0g</span><span class="ts-label">protein</span></div>
+      <div class="ts-item"><span class="ts-val" id="tmon-fib">0g</span><span class="ts-label">fiber</span></div>
+      <div class="ts-item"><span class="ts-val" id="tmon-fat">0g</span><span class="ts-label">fat</span></div>
+    </div>
+    <button class="tracker-clear" onclick="clearDay('mon')">↺ Reset day</button>
+  </div>
+<div class="sched-list" id="slist-mon">
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon">💧</div><div class="si-body"><div class="si-title">Wake up · drink 500 ml water</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:40 AM</div><div class="si-icon">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span>P:1g T:2g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado mashed, 1 hard boiled egg on top, red pepper flakes, arugula</div><div class="si-macros"><span>P:11g F:5g T:13g</span> · 330 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado mashed, 1 hard boiled egg on top, red pepper flakes, arugula</div><div class="si-macros"><span>P:11g F:5g T:13g</span> · 330 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1017721-avocado-toast" target="_blank"><span class="si-nyt">NYT</span>Avocado Toast →</a></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">12:00 PM</div><div class="si-icon">💼</div><div class="si-body"><div class="si-title">Meetings start (12–5:30pm)</div><div class="si-detail">Lunch & snack happen during breaks — everything is prepped and ready</div></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil & Quinoa Bowl</div><div class="si-detail">½ cup batch lentils + quinoa, Sunday's roasted veg, lemon-olive oil dressing, feta — 2 min to assemble</div><div class="si-macros"><span>P:22g F:10g T:10g</span> · 420 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil & Quinoa Bowl</div><div class="si-detail">½ cup batch lentils + quinoa, Sunday's roasted veg, lemon-olive oil dressing, feta — 2 min to assemble</div><div class="si-macros"><span>P:22g F:10g T:10g</span> · 420 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1019661-lentil-and-chickpea-salad-with-feta-and-tahini" target="_blank"><span class="si-nyt">NYT</span>Lentil Salad (no tahini) →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon">🍎</div><div class="si-body"><div class="si-title">Snack break — Apple + Almond Butter</div><div class="si-detail">Keep on your desk, no prep needed</div><div class="si-macros"><span>P:4g F:5g T:9g</span> · 200 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">5:30 PM</div><div class="si-icon">✅</div><div class="si-body"><div class="si-title">Meetings end</div></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">5:45 PM</div><div class="si-icon">🏋️</div><div class="si-body"><div class="si-title">WORKOUT — Full Body Strength A (45–55 min)</div><div class="si-detail">Goblet squat · Romanian deadlift · Chest press · DB Row · Lateral raises · Plank · Dead bug</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 PM</div><div class="si-icon">🐟</div><div class="si-body"><div class="si-title">Dinner — Italian Herb Salmon + Asparagus & Rice</div><div class="si-detail">4 oz salmon (cook fresh 12 min), asparagus, ½ cup batch brown rice</div><div class="si-macros"><span>P:32g F:5g T:12g</span> · 480 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 PM</div><div class="si-icon">🐟</div><div class="si-body"><div class="si-title">Dinner — Italian Herb Salmon + Asparagus & Rice</div><div class="si-detail">4 oz salmon (cook fresh 12 min), asparagus, ½ cup batch brown rice</div><div class="si-macros"><span>P:32g F:5g T:12g</span> · 480 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/7816-roasted-salmon-glazed-with-brown-sugar-and-mustard" target="_blank"><span class="si-nyt">NYT</span>Brown Sugar Glazed Salmon →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — Cottage Cheese + Cucumber</div><div class="si-macros"><span>P:14g F:0g T:1g</span> · 75 cal</div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
@@ -645,16 +781,26 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 
   <div class="day-panel" id="dp-tue">
     <div class="dhc"><div class="dhc-top"><div><h2>Tuesday — HIIT Cardio</h2><p>🔥 30–35 min · morning before meetings · Asian Day</p></div><div class="dhc-badges"><div class="dhc-badge">~1,495 cal</div><div class="dhc-badge">P:131g</div><div class="dhc-badge">F:26g</div></div></div></div>
-    <div class="sched-list">
+      <div class="macro-tracker" id="tracker-tue">
+    <span class="tracker-label">Eaten today</span>
+    <div class="tracker-stats">
+      <div class="ts-item"><span class="ts-val" id="ttue-cal">0</span><span class="ts-label">cal</span></div>
+      <div class="ts-item"><span class="ts-val" id="ttue-pro">0g</span><span class="ts-label">protein</span></div>
+      <div class="ts-item"><span class="ts-val" id="ttue-fib">0g</span><span class="ts-label">fiber</span></div>
+      <div class="ts-item"><span class="ts-val" id="ttue-fat">0g</span><span class="ts-label">fat</span></div>
+    </div>
+    <button class="tracker-clear" onclick="clearDay('tue')">↺ Reset day</button>
+  </div>
+<div class="sched-list" id="slist-tue">
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon">💧</div><div class="si-body"><div class="si-title">Wake up · drink 500 ml water</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:40 AM</div><div class="si-icon">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span>P:1g T:2g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🔥</div><div class="si-body"><div class="si-title">WORKOUT — HIIT Cardio (30–35 min)</div><div class="si-detail">5 min warm-up · 10 rounds: 20 sec sprint / 40 sec walk · 10 min cool-down + stretch</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:50 AM</div><div class="si-icon">🍳</div><div class="si-body"><div class="si-title">Breakfast — Greek Yogurt Granola Bowl</div><div class="si-detail">¾ cup Greek yogurt, ½ cup berries, sesame-free granola, honey</div><div class="si-macros"><span>P:18g F:4g T:7g</span> · 330 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">12:00 PM</div><div class="si-icon">💼</div><div class="si-body"><div class="si-title">Meetings start (12–5:30pm)</div></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Asian Chicken Bowl</div><div class="si-detail">Batch chicken sliced over batch rice, reheated broccoli & snap peas, soy-ginger sauce</div><div class="si-macros"><span>P:36g F:7g T:8g</span> · 440 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Asian Chicken Bowl</div><div class="si-detail">Batch chicken sliced over batch rice, reheated broccoli & snap peas, soy-ginger sauce</div><div class="si-macros"><span>P:36g F:7g T:8g</span> · 440 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1018938-soy-glazed-chicken" target="_blank"><span class="si-nyt">NYT</span>Soy-Glazed Chicken →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon">🫛</div><div class="si-body"><div class="si-title">Snack break — Edamame + Rice Cakes</div><div class="si-macros"><span>P:10g F:4g T:3g</span> · 190 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">5:30 PM</div><div class="si-icon">✅</div><div class="si-body"><div class="si-title">Meetings end</div></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon">🍽️</div><div class="si-body"><div class="si-title">Dinner — Miso Chickpea & Broccoli Bowl</div><div class="si-detail">Chickpeas in miso-garlic glaze (olive oil, no sesame), reheated broccoli, ½ cup batch brown rice</div><div class="si-macros"><span>P:20g F:9g T:11g</span> · 445 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon">🍽️</div><div class="si-body"><div class="si-title">Dinner — Miso Chickpea & Broccoli Bowl</div><div class="si-detail">Chickpeas in miso-garlic glaze (olive oil, no sesame), reheated broccoli, ½ cup batch brown rice</div><div class="si-macros"><span>P:20g F:9g T:11g</span> · 445 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1019436-miso-glazed-tofu" target="_blank"><span class="si-nyt">NYT</span>Miso Glaze →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — Greek Yogurt + Cinnamon + Honey</div><div class="si-macros"><span>P:17g</span> · 90 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:30 PM</div><div class="si-icon">📝</div><div class="si-body"><div class="si-title">Prep overnight oats for Wednesday</div><div class="si-detail">½ cup oats + ¾ cup almond milk + flaxseed + honey in jar · refrigerate overnight</div></div><div class="si-cb2"></div></div>
     </div>
@@ -668,16 +814,26 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 
   <div class="day-panel" id="dp-wed">
     <div class="dhc"><div class="dhc-top"><div><h2>Wednesday — Strength B</h2><p>💪 45–55 min · after meetings · Italian Night</p></div><div class="dhc-badges"><div class="dhc-badge">~1,500 cal</div><div class="dhc-badge">P:122g</div><div class="dhc-badge">F:24g</div></div></div></div>
-    <div class="sched-list">
+      <div class="macro-tracker" id="tracker-wed">
+    <span class="tracker-label">Eaten today</span>
+    <div class="tracker-stats">
+      <div class="ts-item"><span class="ts-val" id="twed-cal">0</span><span class="ts-label">cal</span></div>
+      <div class="ts-item"><span class="ts-val" id="twed-pro">0g</span><span class="ts-label">protein</span></div>
+      <div class="ts-item"><span class="ts-val" id="twed-fib">0g</span><span class="ts-label">fiber</span></div>
+      <div class="ts-item"><span class="ts-val" id="twed-fat">0g</span><span class="ts-label">fat</span></div>
+    </div>
+    <button class="tracker-clear" onclick="clearDay('wed')">↺ Reset day</button>
+  </div>
+<div class="sched-list" id="slist-wed">
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon">💧</div><div class="si-body"><div class="si-title">Wake up · drink 500 ml water</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:40 AM</div><div class="si-icon">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span>P:1g T:2g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🥣</div><div class="si-body"><div class="si-title">Breakfast — Overnight Oats</div><div class="si-detail">Grab from fridge, add ½ cup strawberries on top</div><div class="si-macros"><span>P:8g F:7g T:6g</span> · 350 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">12:00 PM</div><div class="si-icon">💼</div><div class="si-body"><div class="si-title">Meetings start (12–5:30pm)</div></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Tuna Niçoise Salad</div><div class="si-detail">4 oz canned tuna, arugula & greens, cherry tomatoes, cucumber, 1 hard boiled egg, olives, red wine vinaigrette</div><div class="si-macros"><span>P:38g F:4g T:14g</span> · 390 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Tuna Niçoise Salad</div><div class="si-detail">4 oz canned tuna, arugula & greens, cherry tomatoes, cucumber, 1 hard boiled egg, olives, red wine vinaigrette</div><div class="si-macros"><span>P:38g F:4g T:14g</span> · 390 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1012720-salad-nicoise" target="_blank"><span class="si-nyt">NYT</span>Salade Niçoise →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon">🥤</div><div class="si-body"><div class="si-title">Snack break — Protein Smoothie</div><div class="si-detail">Blend Sunday freezer pack + 1 cup almond milk + 1 scoop protein powder</div><div class="si-macros"><span>P:24g F:2g T:3g</span> · 200 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">5:30 PM</div><div class="si-icon">✅</div><div class="si-body"><div class="si-title">Meetings end</div></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">5:45 PM</div><div class="si-icon">💪</div><div class="si-body"><div class="si-title">WORKOUT — Full Body Strength B (45–55 min)</div><div class="si-detail">Bulgarian split squat · Hip thrust · Shoulder press · Lat pulldown · Triceps · Bicycle crunches · Side plank</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 PM</div><div class="si-icon">🍝</div><div class="si-body"><div class="si-title">Dinner — Shrimp & Tomato Orzo</div><div class="si-detail">4 oz shrimp (5 min cook), orzo, canned tomatoes, garlic, olive oil, basil, Parmesan</div><div class="si-macros"><span>P:32g F:4g T:11g</span> · 490 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 PM</div><div class="si-icon">🍝</div><div class="si-body"><div class="si-title">Dinner — Shrimp & Tomato Orzo</div><div class="si-detail">4 oz shrimp (5 min cook), orzo, canned tomatoes, garlic, olive oil, basil, Parmesan</div><div class="si-macros"><span>P:32g F:4g T:11g</span> · 490 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1021078-shrimp-and-tomato-pasta" target="_blank"><span class="si-nyt">NYT</span>Shrimp & Tomato Pasta →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — Dark Chocolate + Herbal Tea</div><div class="si-macros"><span>P:1g T:4g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
@@ -690,17 +846,27 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 
   <div class="day-panel" id="dp-thu">
     <div class="dhc"><div class="dhc-top"><div><h2>Thursday — Active Recovery</h2><p>🧘 Yoga 30–40 min · morning before meetings · Veggie day</p></div><div class="dhc-badges"><div class="dhc-badge">~1,490 cal</div><div class="dhc-badge">P:118g</div><div class="dhc-badge">F:30g</div></div></div></div>
-    <div class="sched-list">
+      <div class="macro-tracker" id="tracker-thu">
+    <span class="tracker-label">Eaten today</span>
+    <div class="tracker-stats">
+      <div class="ts-item"><span class="ts-val" id="tthu-cal">0</span><span class="ts-label">cal</span></div>
+      <div class="ts-item"><span class="ts-val" id="tthu-pro">0g</span><span class="ts-label">protein</span></div>
+      <div class="ts-item"><span class="ts-val" id="tthu-fib">0g</span><span class="ts-label">fiber</span></div>
+      <div class="ts-item"><span class="ts-val" id="tthu-fat">0g</span><span class="ts-label">fat</span></div>
+    </div>
+    <button class="tracker-clear" onclick="clearDay('thu')">↺ Reset day</button>
+  </div>
+<div class="sched-list" id="slist-thu">
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon">💧</div><div class="si-body"><div class="si-title">Wake up · drink 500 ml water</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:40 AM</div><div class="si-icon">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span>P:1g T:2g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🧘</div><div class="si-body"><div class="si-title">WORKOUT — Yoga / Active Recovery (30–40 min)</div><div class="si-detail">20–25 min yoga flow · 10 min foam rolling quads, IT band, hamstrings · optional 20 min brisk walk</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">10:00 AM</div><div class="si-icon">🍳</div><div class="si-body"><div class="si-title">Breakfast — Veggie Scramble + Toast</div><div class="si-detail">2 eggs + 2 whites, reheated Sunday roasted veg, Dave's Killer Bread, thin avocado spread</div><div class="si-macros"><span>P:22g F:4g T:12g</span> · 335 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">12:00 PM</div><div class="si-icon">💼</div><div class="si-body"><div class="si-title">Meetings start (12–5:30pm)</div></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup + Hard Boiled Egg</div><div class="si-detail">2 cups batch lentil soup reheated, 1 hard boiled egg halved on top, baby carrots</div><div class="si-macros"><span>P:24g F:15g T:4g</span> · 380 cal</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon">🥕</div><div class="si-body"><div class="si-title">Snack break — Martha Stewart Hummus + Veggies</div><div class="si-detail">3 tbsp homemade hummus, pre-cut celery, bell pepper, baby carrots (all prepped Sunday)</div><div class="si-macros"><span>P:4g F:4g T:5g</span> · 155 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup + Hard Boiled Egg</div><div class="si-detail">2 cups batch lentil soup reheated, 1 hard boiled egg halved on top, baby carrots</div><div class="si-macros"><span>P:24g F:15g T:4g</span> · 380 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1019739-lentil-soup-with-lots-of-lemon" target="_blank"><span class="si-nyt">NYT</span>Lentil Soup with Lots of Lemon →</a></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon">🥕</div><div class="si-body"><div class="si-title">Snack break — Martha Stewart Hummus + Veggies</div><div class="si-detail">3 tbsp homemade hummus, pre-cut celery, bell pepper, baby carrots (all prepped Sunday)</div><div class="si-macros"><span>P:4g F:4g T:5g</span> · 155 cal</div><a class="si-recipe" href="https://www.marthastewart.com/334974/hummus-without-tahini" target="_blank">Hummus (no tahini) →</a></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">5:30 PM</div><div class="si-icon">✅</div><div class="si-body"><div class="si-title">Meetings end</div></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon">🍽️</div><div class="si-body"><div class="si-title">Dinner — Shrimp Scampi with Orzo</div><div class="si-detail">4 oz shrimp (5 min cook), orzo, white wine, garlic, lemon, parsley, Parmesan</div><div class="si-macros"><span>P:30g F:2g T:11g</span> · 430 cal</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — 2 Mini Babybel Light + Cherry Tomatoes</div><div class="si-macros"><span>P:8g T:5g</span> · 100 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon">🍽️</div><div class="si-body"><div class="si-title">Dinner — Shrimp Scampi with Orzo</div><div class="si-detail">4 oz shrimp (5 min cook), orzo, white wine, garlic, lemon, parsley, Parmesan</div><div class="si-macros"><span>P:30g F:2g T:11g</span> · 430 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1023071-shrimp-scampi-with-orzo" target="_blank"><span class="si-nyt">NYT</span>Shrimp Scampi with Orzo →</a></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — 2 Mini Babybel Light + Cherry Tomatoes</div><div class="si-macros"><span>P:8g T:5g</span> · 100 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1023071-shrimp-scampi-with-orzo" target="_blank"><span class="si-nyt">NYT</span>Shrimp Scampi with Orzo →</a></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
       <div class="dt-item"><span class="dt-val">1,560</span><span class="dt-label">Total cal</span></div>
@@ -712,16 +878,26 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 
   <div class="day-panel" id="dp-fri">
     <div class="dhc"><div class="dhc-top"><div><h2>Friday — Strength C</h2><p>🏆 45–55 min · after meetings · Light &amp; Bright meals</p></div><div class="dhc-badges"><div class="dhc-badge">~1,505 cal</div><div class="dhc-badge">P:129g</div><div class="dhc-badge">F:23g</div></div></div></div>
-    <div class="sched-list">
+      <div class="macro-tracker" id="tracker-fri">
+    <span class="tracker-label">Eaten today</span>
+    <div class="tracker-stats">
+      <div class="ts-item"><span class="ts-val" id="tfri-cal">0</span><span class="ts-label">cal</span></div>
+      <div class="ts-item"><span class="ts-val" id="tfri-pro">0g</span><span class="ts-label">protein</span></div>
+      <div class="ts-item"><span class="ts-val" id="tfri-fib">0g</span><span class="ts-label">fiber</span></div>
+      <div class="ts-item"><span class="ts-val" id="tfri-fat">0g</span><span class="ts-label">fat</span></div>
+    </div>
+    <button class="tracker-clear" onclick="clearDay('fri')">↺ Reset day</button>
+  </div>
+<div class="sched-list" id="slist-fri">
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon">💧</div><div class="si-body"><div class="si-title">Wake up · drink 500 ml water</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:40 AM</div><div class="si-icon">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span>P:1g T:2g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado with lemon + capers + thin red onion, 1 hard boiled egg on top</div><div class="si-macros"><span>P:11g F:5g T:13g</span> · 340 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🥑</div><div class="si-body"><div class="si-title">Breakfast — Avocado Toast + Hard Boiled Egg</div><div class="si-detail">Dave's Killer Bread, ¼ avocado with lemon + capers + thin red onion, 1 hard boiled egg on top</div><div class="si-macros"><span>P:11g F:5g T:13g</span> · 340 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1017721-avocado-toast" target="_blank"><span class="si-nyt">NYT</span>Avocado Toast →</a></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">12:00 PM</div><div class="si-icon">💼</div><div class="si-body"><div class="si-title">Meetings start (12–5:30pm)</div></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🫘</div><div class="si-body"><div class="si-title">Lunch — Chickpea Stew with Spinach</div><div class="si-detail">Chickpeas in turmeric-garlic broth, wilted spinach, Greek yogurt instead of coconut milk, Dave's bread</div><div class="si-macros"><span>P:20g F:12g T:10g</span> · 420 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:15 PM</div><div class="si-icon">🫘</div><div class="si-body"><div class="si-title">Lunch — Chickpea Stew with Spinach</div><div class="si-detail">Chickpeas in turmeric-garlic broth, wilted spinach, Greek yogurt instead of coconut milk, Dave's bread</div><div class="si-macros"><span>P:20g F:12g T:10g</span> · 420 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1019772-spiced-chickpea-stew-with-coconut-and-turmeric" target="_blank"><span class="si-nyt">NYT</span>Spiced Chickpea Stew →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon">🍍</div><div class="si-body"><div class="si-title">Snack break — Cottage Cheese + Pineapple</div><div class="si-macros"><span>P:14g F:1g T:1g</span> · 145 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2 wb"><div class="si-time">5:30 PM</div><div class="si-icon">✅</div><div class="si-body"><div class="si-title">Meetings end — weekend starts!</div></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">5:45 PM</div><div class="si-icon">🏆</div><div class="si-body"><div class="si-title">WORKOUT — Full Body Strength C (45–55 min)</div><div class="si-detail">Sumo deadlift · Walking lunges · Chest fly · Reverse lunge twist · Incline DB row · Leg raises</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 PM</div><div class="si-icon">🍗</div><div class="si-body"><div class="si-title">Dinner — Italian Chicken Breast + White Bean Salad</div><div class="si-detail">4 oz batch chicken reheated, warm cannellini beans, cherry tomatoes, arugula, lemon-olive oil</div><div class="si-macros"><span>P:42g F:8g T:12g</span> · 470 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">7:00 PM</div><div class="si-icon">🍗</div><div class="si-body"><div class="si-title">Dinner — Italian Chicken Breast + White Bean Salad</div><div class="si-detail">4 oz batch chicken reheated, warm cannellini beans, cherry tomatoes, arugula, lemon-olive oil</div><div class="si-macros"><span>P:42g F:8g T:12g</span> · 470 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1015598-chicken-with-white-beans" target="_blank"><span class="si-nyt">NYT</span>Chicken with White Beans →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — Herbal Tea + Dark Chocolate</div><div class="si-macros"><span>P:1g T:4g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
@@ -734,13 +910,23 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 
   <div class="day-panel" id="dp-sat">
     <div class="dhc"><div class="dhc-top"><div><h2>Saturday — Zone 2 Cardio</h2><p>🚶 45–60 min · morning · no meetings · Weekend Brunch</p></div><div class="dhc-badges"><div class="dhc-badge">~1,500 cal</div><div class="dhc-badge">P:125g</div><div class="dhc-badge">F:20g</div></div></div></div>
-    <div class="sched-list">
+      <div class="macro-tracker" id="tracker-sat">
+    <span class="tracker-label">Eaten today</span>
+    <div class="tracker-stats">
+      <div class="ts-item"><span class="ts-val" id="tsat-cal">0</span><span class="ts-label">cal</span></div>
+      <div class="ts-item"><span class="ts-val" id="tsat-pro">0g</span><span class="ts-label">protein</span></div>
+      <div class="ts-item"><span class="ts-val" id="tsat-fib">0g</span><span class="ts-label">fiber</span></div>
+      <div class="ts-item"><span class="ts-val" id="tsat-fat">0g</span><span class="ts-label">fat</span></div>
+    </div>
+    <button class="tracker-clear" onclick="clearDay('sat')">↺ Reset day</button>
+  </div>
+<div class="sched-list" id="slist-sat">
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon">💧</div><div class="si-body"><div class="si-title">Wake up · drink 500 ml water</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:40 AM</div><div class="si-icon">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span>P:1g T:2g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🚶</div><div class="si-body"><div class="si-title">WORKOUT — Zone 2 Cardio (45–60 min)</div><div class="si-detail">Brisk walk, light jog, cycling, or swim · conversational pace · target HR 120–140 bpm</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">10:30 AM</div><div class="si-icon">🍳</div><div class="si-body"><div class="si-title">Brunch — Shakshuka + Hard Boiled Eggs & Feta</div><div class="si-detail">Spiced tomato sauce (15 min), 2 hard boiled eggs halved on top, crumbled feta, Dave's Killer Bread</div><div class="si-macros"><span>P:22g F:5g T:16g</span> · 420 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">10:30 AM</div><div class="si-icon">🍳</div><div class="si-body"><div class="si-title">Brunch — Shakshuka + Hard Boiled Eggs & Feta</div><div class="si-detail">Spiced tomato sauce (15 min), 2 hard boiled eggs halved on top, crumbled feta, Dave's Killer Bread</div><div class="si-macros"><span>P:22g F:5g T:16g</span> · 420 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1014721-shakshuka-with-feta" target="_blank"><span class="si-nyt">NYT</span>Shakshuka with Feta →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">2:30 PM</div><div class="si-icon">🥤</div><div class="si-body"><div class="si-title">Snack — Protein Smoothie</div><div class="si-detail">Blend Sunday freezer pack + almond milk + protein powder</div><div class="si-macros"><span>P:24g F:3g T:3g</span> · 210 cal</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon">🐟</div><div class="si-body"><div class="si-title">Dinner — Miso Butter Salmon Bowl</div><div class="si-detail">4 oz salmon, miso-butter glaze (8 min broil, no sesame), roasted cabbage & mushrooms, batch brown rice</div><div class="si-macros"><span>P:34g F:6g T:16g</span> · 490 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:30 PM</div><div class="si-icon">🐟</div><div class="si-body"><div class="si-title">Dinner — Miso Butter Salmon Bowl</div><div class="si-detail">4 oz salmon, miso-butter glaze (8 min broil, no sesame), roasted cabbage & mushrooms, batch brown rice</div><div class="si-macros"><span>P:34g F:6g T:16g</span> · 490 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1025677-chan-chan-yaki-miso-butter-salmon" target="_blank"><span class="si-nyt">NYT</span>Miso Butter Salmon →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — Greek Yogurt Parfait + Berries + Honey</div><div class="si-macros"><span>P:10g F:1g</span> · 130 cal</div></div><div class="si-cb2"></div></div>
     </div>
     <div class="day-total">
@@ -753,15 +939,25 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 
   <div class="day-panel" id="dp-sun">
     <div class="dhc dhc-rst"><div class="dhc-top"><div><h2>Sunday — Rest + Meal Prep</h2><p>😴 No workout · ~90 min prep sets up the whole week</p></div><div class="dhc-badges"><div class="dhc-badge">~1,490 cal</div><div class="dhc-badge">P:124g</div><div class="dhc-badge">F:28g</div></div></div></div>
-    <div class="sched-list">
+      <div class="macro-tracker" id="tracker-sun">
+    <span class="tracker-label">Eaten today</span>
+    <div class="tracker-stats">
+      <div class="ts-item"><span class="ts-val" id="tsun-cal">0</span><span class="ts-label">cal</span></div>
+      <div class="ts-item"><span class="ts-val" id="tsun-pro">0g</span><span class="ts-label">protein</span></div>
+      <div class="ts-item"><span class="ts-val" id="tsun-fib">0g</span><span class="ts-label">fiber</span></div>
+      <div class="ts-item"><span class="ts-val" id="tsun-fat">0g</span><span class="ts-label">fat</span></div>
+    </div>
+    <button class="tracker-clear" onclick="clearDay('sun')">↺ Reset day</button>
+  </div>
+<div class="sched-list" id="slist-sun">
       <div class="si2" onclick="togS(this)"><div class="si-time">8:30 AM</div><div class="si-icon">💧</div><div class="si-body"><div class="si-title">Wake up · drink 500 ml water + lemon squeeze</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">8:45 AM</div><div class="si-icon">🍵</div><div class="si-body"><div class="si-title">Matcha Almond Latte</div><div class="si-macros"><span>P:1g T:2g</span> · 70 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 AM</div><div class="si-icon">🍳</div><div class="si-body"><div class="si-title">Breakfast — Greek Yogurt + Berries + Granola</div><div class="si-detail">Quick and easy while batch cooking starts</div><div class="si-macros"><span>P:18g F:4g T:4g</span> · 290 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:30 AM</div><div class="si-icon">🍽️</div><div class="si-body"><div class="si-title">START MEAL PREP — ~90 min in parallel</div><div class="si-detail">Oven: chicken + veg · Stove: eggs boiling, rice cooking, lentil soup · Counter: blend hummus, make dressings, freeze smoothie packs, wash & cut snack veg</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">11:30 AM</div><div class="si-icon">📦</div><div class="si-body"><div class="si-title">Portion everything into labeled containers</div><div class="si-detail">Chicken · rice · quinoa · lentil soup (freeze half) · dressings in jars · snack veg in water containers</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">12:30 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup (first bowl from the batch)</div><div class="si-detail">2 cups while fresh and hot · taste test · store the rest</div><div class="si-macros"><span>P:18g F:14g T:3g</span> · 380 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">12:30 PM</div><div class="si-icon">🥗</div><div class="si-body"><div class="si-title">Lunch — Lentil Soup (first bowl from the batch)</div><div class="si-detail">2 cups while fresh and hot · taste test · store the rest</div><div class="si-macros"><span>P:18g F:14g T:3g</span> · 380 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1019739-lentil-soup-with-lots-of-lemon" target="_blank"><span class="si-nyt">NYT</span>Lentil Soup with Lots of Lemon →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">3:30 PM</div><div class="si-icon">🍎</div><div class="si-body"><div class="si-title">Snack — Apple + Almond Butter</div><div class="si-macros"><span>P:4g F:5g T:9g</span> · 200 cal</div></div><div class="si-cb2"></div></div>
-      <div class="si2" onclick="togS(this)"><div class="si-time">6:00 PM</div><div class="si-icon">🍗</div><div class="si-body"><div class="si-title">Dinner — Sheet Pan Chicken + Roasted Veg</div><div class="si-detail">Eat one portion tonight · refrigerate the rest for Tue & Fri</div><div class="si-macros"><span>P:36g F:6g T:9g</span> · 470 cal</div></div><div class="si-cb2"></div></div>
+      <div class="si2" onclick="togS(this)"><div class="si-time">6:00 PM</div><div class="si-icon">🍗</div><div class="si-body"><div class="si-title">Dinner — Sheet Pan Chicken + Roasted Veg</div><div class="si-detail">Eat one portion tonight · refrigerate the rest for Tue & Fri</div><div class="si-macros"><span>P:36g F:6g T:9g</span> · 470 cal</div><a class="si-recipe" href="https://cooking.nytimes.com/recipes/1018889-sheet-pan-chicken-thighs-with-roasted-vegetables" target="_blank"><span class="si-nyt">NYT</span>Sheet Pan Chicken + Veg →</a></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:00 PM</div><div class="si-icon">🌙</div><div class="si-body"><div class="si-title">Evening — Cottage Cheese + Cherry Tomatoes</div><div class="si-macros"><span>P:14g F:1g T:1g</span> · 130 cal</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">9:30 PM</div><div class="si-icon">📝</div><div class="si-body"><div class="si-title">Prep overnight oats for Wednesday</div><div class="si-detail">Do this Tuesday night instead — just a reminder to remember</div></div><div class="si-cb2"></div></div>
       <div class="si2" onclick="togS(this)"><div class="si-time">10:00 PM</div><div class="si-icon">💤</div><div class="si-body"><div class="si-title">Lights out · aim for 7–8 hours sleep</div><div class="si-detail">Sleep is the most underrated fat-loss tool at 40. Non-negotiable.</div></div><div class="si-cb2"></div></div>
@@ -775,9 +971,13 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
   </div>
 
 </div>
+
+<button class="tab-clear-btn" onclick="clearAllSchedule()" style="margin-bottom:16px;">↺ Clear all schedule checkboxes</button>
+
 </div>
 
 <script>
+// ── NAVIGATION ──────────────────────────────────────────────────
 function switchTab(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
@@ -791,6 +991,8 @@ function switchDay(id, btn) {
   document.getElementById('dp-' + id).classList.add('active');
   btn.classList.add('active');
 }
+
+// ── LOCALSTORAGE KEY ─────────────────────────────────────────────
 function getKey(el) {
   const list = el.closest('.shop-cat > div, .prep-items-wrap, .sched-list');
   if (!list) return null;
@@ -804,20 +1006,101 @@ function persist(el, cls) {
   if (!key) return;
   try { el.classList.contains(cls) ? localStorage.setItem(key,'1') : localStorage.removeItem(key); } catch(e) {}
 }
-function restore() {
-  document.querySelectorAll('.shop-item').forEach(el => { const k=getKey(el); if(k&&localStorage.getItem(k)) el.classList.add('checked'); });
-  document.querySelectorAll('.prep-row').forEach(el => { const k=getKey(el); if(k&&localStorage.getItem(k)) el.classList.add('checked'); });
-  document.querySelectorAll('.si2:not(.wb)').forEach(el => { const k=getKey(el); if(k&&localStorage.getItem(k)) el.classList.add('done'); });
+
+// ── MACRO TRACKER ────────────────────────────────────────────────
+// Parse macros from a schedule row's si-macros text
+function parseMacros(el) {
+  const m = el.querySelector('.si-macros');
+  if (!m) return { cal:0, pro:0, fib:0, fat:0 };
+  const txt = m.textContent;
+  const cal = parseInt(txt.match(/(\d+)\s*cal/)?.[1] || 0);
+  const pro = parseInt(txt.match(/P:(\d+)/)?.[1] || 0);
+  const fib = parseInt(txt.match(/F:(\d+)/)?.[1] || 0);
+  const fat = parseInt(txt.match(/T:(\d+)/)?.[1] || 0);
+  return { cal, pro, fib, fat };
 }
-function tog(el)  { el.classList.toggle('checked'); persist(el,'checked'); }
+
+function updateTracker(dayId) {
+  const list = document.getElementById('slist-' + dayId);
+  if (!list) return;
+  let cal=0, pro=0, fib=0, fat=0;
+  list.querySelectorAll('.si2.done').forEach(row => {
+    const m = parseMacros(row);
+    cal += m.cal; pro += m.pro; fib += m.fib; fat += m.fat;
+  });
+  const set = (id, val, unit) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val + (unit || '');
+  };
+  set('t'+dayId+'-cal', cal, '');
+  set('t'+dayId+'-pro', pro, 'g');
+  set('t'+dayId+'-fib', fib, 'g');
+  set('t'+dayId+'-fat', fat, 'g');
+}
+
+// ── TOGGLE FUNCTIONS ─────────────────────────────────────────────
+function tog(el) { el.classList.toggle('checked'); persist(el,'checked'); }
 function togP(el) { el.classList.toggle('checked'); persist(el,'checked'); }
-function togS(el) { el.classList.toggle('done');    persist(el,'done'); }
+
+function togS(el) {
+  if (el.classList.contains('wb')) return; // skip work-block rows
+  el.classList.toggle('done');
+  persist(el,'done');
+  // Update the tracker for whichever day panel this row belongs to
+  const panel = el.closest('.day-panel');
+  if (panel) {
+    const dayId = panel.id.replace('dp-','');
+    updateTracker(dayId);
+  }
+}
+
+// ── CLEAR FUNCTIONS ──────────────────────────────────────────────
 function clearShop() {
   document.querySelectorAll('.shop-item.checked').forEach(el => {
     el.classList.remove('checked');
-    const k=getKey(el); if(k) try{localStorage.removeItem(k);}catch(e){}
+    const k = getKey(el);
+    if (k) try { localStorage.removeItem(k); } catch(e) {}
   });
 }
+
+function clearPrep() {
+  document.querySelectorAll('.prep-row.checked').forEach(el => {
+    el.classList.remove('checked');
+    const k = getKey(el);
+    if (k) try { localStorage.removeItem(k); } catch(e) {}
+  });
+}
+
+function clearDay(dayId) {
+  const list = document.getElementById('slist-' + dayId);
+  if (!list) return;
+  list.querySelectorAll('.si2.done').forEach(el => {
+    el.classList.remove('done');
+    const k = getKey(el);
+    if (k) try { localStorage.removeItem(k); } catch(e) {}
+  });
+  updateTracker(dayId);
+}
+
+function clearAllSchedule() {
+  ['mon','tue','wed','thu','fri','sat','sun'].forEach(d => clearDay(d));
+}
+
+// ── RESTORE STATE ON LOAD ────────────────────────────────────────
+function restore() {
+  document.querySelectorAll('.shop-item').forEach(el => {
+    const k = getKey(el); if (k && localStorage.getItem(k)) el.classList.add('checked');
+  });
+  document.querySelectorAll('.prep-row').forEach(el => {
+    const k = getKey(el); if (k && localStorage.getItem(k)) el.classList.add('checked');
+  });
+  document.querySelectorAll('.si2:not(.wb)').forEach(el => {
+    const k = getKey(el); if (k && localStorage.getItem(k)) el.classList.add('done');
+  });
+  // Update all trackers after restore
+  ['mon','tue','wed','thu','fri','sat','sun'].forEach(d => updateTracker(d));
+}
+
 document.addEventListener('DOMContentLoaded', restore);
 </script>
 
