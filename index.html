@@ -256,11 +256,11 @@ color: var(–ink);
 .day-panel { display: none; }
 .day-panel.active { display: block; }
 
-.dhc { border-radius: 10px; padding: 15px 16px; margin-bottom: 12px; background: var(–ink); color: var(–white); }
+.dhc { border-radius: 10px; padding: 15px 16px; margin-bottom: 12px; background: #111111; color: #ffffff; }
 .dhc-rst { background: var(–light); color: var(–ink); }
 .dhc-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-.dhc h2 { font-size: 16px; font-weight: 700; letter-spacing: -.3px; }
-.dhc p { font-size: 11px; color: rgba(255,255,255,.75); margin-top: 2px; }
+.dhc h2 { font-size: 16px; font-weight: 700; letter-spacing: -.3px; color: #ffffff; }
+.dhc p { font-size: 11px; color: rgba(255,255,255,.8); margin-top: 2px; }
 .dhc-rst p { color: var(–mid); }
 .dhc-badges { display: flex; gap: 5px; flex-wrap: wrap; }
 .dhc-badge { background: rgba(255,255,255,.2); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 99px; color: #ffffff; }
@@ -276,7 +276,8 @@ background: var(–white); border: 1px solid var(–border);
 border-radius: 9px; cursor: pointer; transition: background .1s;
 }
 .si2:hover { background: var(–light); }
-.si2.done { opacity: .4; }
+.si2.done { opacity: 1; }
+.si2.done .si-time, .si2.done .si-icon, .si2.done .si-body { opacity: .35; }
 .si2.done .si-title { text-decoration: line-through; }
 /* Work-block rows get a dashed border to stand out as non-action items */
 .si2.wb { background: var(–light); border-style: dashed; cursor: default; }
@@ -304,63 +305,66 @@ border-radius: 9px; cursor: pointer; transition: background .1s;
 .mt-time { width: 58px; }
 }
 
-/* ── RUNNING MACRO TRACKER ── */
+/* ── RUNNING MACRO TRACKER — compact single row ── */
 .macro-tracker {
-background: var(–ink);
-color: var(–white);
-border-radius: 10px;
-padding: 12px 16px;
-margin-bottom: 12px;
+background: #111111;
+color: #ffffff;
+border-radius: 8px;
+padding: 8px 12px;
+margin-bottom: 10px;
 display: flex;
 align-items: center;
-gap: 0;
-flex-wrap: wrap;
+gap: 10px;
+flex-wrap: nowrap;
+overflow: hidden;
 }
 .tracker-label {
-font-size: 11px;
+font-size: 10px;
 font-weight: 600;
-color: rgba(255,255,255,.55);
+color: rgba(255,255,255,.5);
 text-transform: uppercase;
-letter-spacing: .5px;
-margin-right: 14px;
+letter-spacing: .4px;
 white-space: nowrap;
+flex-shrink: 0;
 }
 .tracker-stats {
 display: flex;
-gap: 16px;
-flex-wrap: wrap;
+gap: 12px;
 flex: 1;
+align-items: baseline;
 }
-.ts-item { text-align: center; }
+.ts-item {
+display: flex;
+align-items: baseline;
+gap: 2px;
+white-space: nowrap;
+}
 .ts-val {
-font-size: 18px;
+font-size: 13px;
 font-weight: 700;
-color: var(–white);
-display: block;
-letter-spacing: -.3px;
+color: #ffffff;
 transition: all .2s;
 }
 .ts-label {
 font-size: 9px;
-color: rgba(255,255,255,.5);
+color: rgba(255,255,255,.45);
 text-transform: uppercase;
-letter-spacing: .8px;
 }
 .tracker-clear {
-background: rgba(255,255,255,.12);
-border: 1px solid rgba(255,255,255,.2);
-border-radius: 7px;
-padding: 6px 12px;
-font-size: 11px;
+background: rgba(255,255,255,.1);
+border: 1px solid rgba(255,255,255,.18);
+border-radius: 5px;
+padding: 4px 8px;
+font-size: 10px;
 font-weight: 600;
-color: rgba(255,255,255,.8);
+color: rgba(255,255,255,.7);
 cursor: pointer;
 font-family: inherit;
 transition: all .15s;
-margin-left: auto;
+flex-shrink: 0;
 white-space: nowrap;
 }
-.tracker-clear:hover { background: rgba(255,255,255,.22); color: #fff; }
+.tracker-clear:hover { background: rgba(255,255,255,.2); color: #fff; }
 
 /* ── CLEAR BUTTONS for Prep + Schedule ── */
 .tab-clear-btn {
