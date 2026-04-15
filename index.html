@@ -150,9 +150,9 @@ color: var(–ink);
 .nut-label { font-size: 10px; color: var(–mid); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
 /* ── MORNING CARD ── */
-.morning-card { background: var(–ink); color: var(–white); border-radius: 10px; padding: 15px 18px; margin-bottom: 24px; display: flex; align-items: center; gap: 13px; }
-.morning-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
-.morning-card p { font-size: 12px; color: rgba(255,255,255,.55); }
+.morning-card { background: #111111; color: #ffffff; border-radius: 10px; padding: 15px 18px; margin-bottom: 24px; display: flex; align-items: center; gap: 13px; }
+.morning-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 3px; color: #ffffff; }
+.morning-card p { font-size: 12px; color: rgba(255,255,255,.8); }
 
 /* ── MACRO LEGEND ── */
 .macro-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; font-size: 12px; color: var(–mid); }
@@ -165,7 +165,7 @@ color: var(–ink);
 .day-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(–mid); }
 .day-name { font-size: 14px; font-weight: 700; color: var(–ink); }
 .day-right { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
-.day-cals { font-size: 11px; font-weight: 700; background: var(–ink); color: var(–white); padding: 2px 9px; border-radius: 99px; }
+.day-cals { font-size: 11px; font-weight: 700; background: #111111; color: #ffffff; padding: 2px 9px; border-radius: 99px; }
 .day-macros { font-size: 11px; font-weight: 600; color: var(–ink); }
 .reuse-bar { background: var(–light); border-bottom: 1px solid var(–border); padding: 5px 14px; font-size: 11px; color: var(–mid); }
 
@@ -178,19 +178,19 @@ color: var(–ink);
 .mn { font-size: 13px; font-weight: 600; color: var(–ink); }
 .md { font-size: 12px; color: var(–mid); margin-top: 2px; line-height: 1.5; }
 .ml-link { display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 600; color: var(–ink); }
-.nyt { display: inline-block; background: var(–ink); color: var(–white); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 5px; border-radius: 3px; margin-right: 3px; vertical-align: middle; }
+.nyt { display: inline-block; background: #111111; color: #ffffff; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 5px; border-radius: 3px; margin-right: 3px; vertical-align: middle; }
 .pills { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
 .pill { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 99px; background: var(–light); color: var(–ink); border: 1px solid var(–border); }
 .pc { color: var(–mid); }
 .mt-cal { width: 50px; text-align: right; font-size: 12px; font-weight: 700; color: var(–ink); padding-top: 11px; white-space: nowrap; }
 
 /* ── SUNDAY PREP BLOCK ── */
-.prep-block { background: var(–ink); color: var(–white); border-radius: 10px; padding: 18px; margin: 22px 0; }
-.prep-block h3 { font-size: 13px; font-weight: 700; margin-bottom: 13px; }
+.prep-block { background: #111111; color: #ffffff; border-radius: 10px; padding: 18px; margin: 22px 0; }
+.prep-block h3 { font-size: 13px; font-weight: 700; margin-bottom: 13px; color: #ffffff; }
 .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px,1fr)); gap: 8px; }
-.pib { background: rgba(255,255,255,.07); border-radius: 8px; padding: 11px; }
+.pib { background: rgba(255,255,255,.12); border-radius: 8px; padding: 11px; }
 .pib-title { font-weight: 700; font-size: 12px; margin-bottom: 3px; }
-.pib-desc { font-size: 11px; color: rgba(255,255,255,.5); line-height: 1.5; }
+.pib-desc { font-size: 11px; color: rgba(255,255,255,.75); line-height: 1.5; }
 
 /* ═══ SHOPPING ═══ */
 .shop-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -378,7 +378,7 @@ margin-top: 12px;
 /* recipe link inside schedule rows */
 .si-recipe { font-size: 11px; font-weight: 600; color: var(–mid); text-decoration: underline; text-underline-offset: 2px; margin-top: 3px; display: inline-block; }
 .si-recipe:hover { color: var(–ink); }
-.si-nyt { display: inline-block; background: var(–ink); color: var(–white); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; margin-right: 3px; vertical-align: middle; }
+.si-nyt { display: inline-block; background: #111111; color: #ffffff; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; margin-right: 3px; vertical-align: middle; }
 
 </style>
 </head>
@@ -964,9 +964,9 @@ margin-top: 12px;
     </div>
   </div>
 
-</div>
-
 <button class="tab-clear-btn" onclick="clearAllSchedule()" style="margin-bottom:16px;">↺ Clear all schedule checkboxes</button>
+
+</div>
 
 </div>
 
